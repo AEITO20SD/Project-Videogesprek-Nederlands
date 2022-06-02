@@ -7,7 +7,22 @@
     <meta name="description" content="Project NL - Communicatievideo || Op deze website kan je video's achter elkaar plaatsen om een kloppend filmpje te maken."/>
     <link rel="stylesheet" href="css/styles.css"/>
     <script>
-        
+        function allowDrop(ev)
+        {
+            ev.preventDefault();
+        }
+
+        function drag(ev)
+        {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev)
+        {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            ev.target.appendChild(document.getElementById(data));
+        }
     </script>
 </head>
 <body>
@@ -15,20 +30,20 @@
 
     </header>
     <main>
-        <div class="videoBox">
+        <div class="videoBox" ondrop="drop(event)" ondragover="allowDrop(event)">
             
         </div>
         <div class="keuzeBox">
             <div class="draggable">
-                <video width="320" height="300" controls>
+                <video id="video1" draggable="true" ondragstart="drag(event)" width="320" height="300" controls>
                     <source src="videos/testVideo.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="draggable">
-                <img width="320" height="300" src="videos/testFoto.jpg">
+                <img id="video2" draggable="true" ondragstart="drag(event)" width="320" height="300" src="videos/testFoto.jpg">
             </div>
-            <div>
-                <img width="320" height="300" src="videos/testFoto2.jpg">
+            <div class="draggable">
+                <img id="video3" draggable="true" ondragstart="drag(event)" width="320" height="300" src="videos/testFoto2.jpg">
             </div>
         </div>
     </main>
