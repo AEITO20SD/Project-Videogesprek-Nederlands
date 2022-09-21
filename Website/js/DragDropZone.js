@@ -63,6 +63,7 @@ function dragMoveListener (event) {
       modifiers: [
         interact.modifiers.restrictRect({
           restriction: '.AllowedDropZone',
+          elementRect: { top: 0, left: 0, bottom: 1, right: 1},
           endOnly: true
         })
       ],
@@ -70,3 +71,5 @@ function dragMoveListener (event) {
       // dragMoveListener from the dragging demo above
       listeners: { move: dragMoveListener }
     })
+
+    
