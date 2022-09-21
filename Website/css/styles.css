@@ -29,6 +29,12 @@ body{
     float: left;
 }
 
+.container {
+    max-width: 1400px;
+    margin: auto;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+}
+
 .row {
     display: flex;
     margin-left: -15px;
