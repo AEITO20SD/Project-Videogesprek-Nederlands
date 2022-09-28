@@ -27,7 +27,7 @@
     height: 100px;
   }
   
-  .dz {
+  .dropzone {
     background-color: #bfe4ff;
     border: dashed 4px transparent;
     border-radius: 4px;
@@ -62,9 +62,4 @@
     transform: translate(0px, 0px);
   
     transition: background-color 0.3s;
-  }
-  
-  .drag-drop.can-drop {
-    color: #000;
-    background-color: #4e4;
   }
