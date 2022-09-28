@@ -9,108 +9,101 @@
     <link rel="stylesheet" href="css/interactivejsStyling.css"/>
     <script src="js/script.js"></script>
     <script src="node_modules/interactjs/dist/interact.js"></script>
-    <script src="js/DragDropZone.js"></script>
+    <script src="js/DragDrop.js"></script>
+
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        .video .remove {
+            display: none;
+        }
+
+        .dropzone .video .remove {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <header>
 
     </header>
     <main>
-        <div class="AllowedDropZone">
-            <div class="container">
-                <div class="row">
-                    <div class="col_1">
-                        <div id="inner-dropzone" class="dropzone">Drop-area</div>
-                    </div>
-                    <div class="col_1">
-                        <div id="inner-dropzone" class="dropzone">Drop-area</div>
-                    </div>
-                    <div class="col_1">
-                        <div id="inner-dropzone" class="dropzone">Drop-area</div>
-                    </div>
-                    <div class="col_1">
-                        <div id="inner-dropzone" class="dropzone">Drop-area</div>
-                    </div>
-                    <div class="col_1">
-                        <div id="inner-dropzone" class="dropzone">Drop-area</div>
-                    </div>
+        <div class="container">
+            <div class="row dropzones js-dropzones">
+                <div class="col_1">
+                    <div class="dropzone js-dropzone dz">Drop-area</div>
                 </div>
-            </div>
-                <div class="rowVideo">
-                    <div class="col_1">
-                        <div id="yes-drop" class="drag-drop"> Videos </div>
-                    </div>
-                    <div class="col_1">
-                        <div id="yes-drop" class="drag-drop"> Videos </div>
-                    </div>
-                    <div class="col_1">
-                        <div id="yes-drop" class="drag-drop"> Videos </div>
-                    </div>
-                    <div class="col_1">
-                        <div id="yes-drop" class="drag-drop"> Videos </div>
-                    </div><div class="col_1">
-                        <div id="yes-drop" class="drag-drop"> Videos </div>
-                    </div>
+                <div class="col_1">
+                    <div class="dropzone js-dropzone dz">Drop-area</div>
                 </div>
-                <div class="rowVideo">
-                    <div class="col_1">
-                        <div id="yes-drop" class="drag-drop"> Videos </div>
-                    </div>
-                    <div class="col_1">
-                        <div id="yes-drop" class="drag-drop"> Videos </div>
-                    </div>
-                    <div class="col_1">
-                        <div id="yes-drop" class="drag-drop"> Videos </div>
-                    </div>
-                    <div class="col_1">
-                        <div id="yes-drop" class="drag-drop"> Videos </div>
-                    </div>
-                    <div class="col_1">
-                        <div id="yes-drop" class="drag-drop"> Videos </div>
-                    </div>
+                <div class="col_1">
+                    <div class="dropzone js-dropzone dz">Drop-area</div>
                 </div>
-                <div class="rowVideo">
-                    <div class="col_1">
-                        <div id="yes-drop" class="drag-drop"> Videos </div>
-                    </div>
-                    <div class="col_1">
-                        <div id="yes-drop" class="drag-drop"> Videos </div>
-                    </div>
-                    <div class="col_1">
-                        <div id="yes-drop" class="drag-drop"> Videos </div>
-                    </div>
-                    <div class="col_1">
-                        <div id="yes-drop" class="drag-drop"> Videos </div>
-                    </div>
-                    <div class="col_1">
-                        <div id="yes-drop" class="drag-drop"> Videos </div>
-                    </div>
+                <div class="col_1">
+                    <div class="dropzone js-dropzone dz">Drop-area</div>
+                </div>
+                <div class="col_1">
+                    <div class="dropzone js-dropzone dz">Drop-area</div>
                 </div>
             </div>
 
+            <div class="row videos js-videos">
+                <div class="col_1">
+                    <div class="video js-video drag-drop">Videos <span class="remove js-remove">[X]</span></div>
+                </div>
+                <div class="col_1">
+                    <div class="video js-video drag-drop">Videos <span class="remove js-remove">[X]</span></div>
+                </div>
+                <div class="col_1">
+                    <div class="video js-video drag-drop">Videos <span class="remove js-remove">[X]</span></div>
+                </div>
+                <div class="col_1">
+                    <div class="video js-video drag-drop">Videos <span class="remove js-remove">[X]</span></div>
+                </div>
+                <div class="col_1">
+                    <div class="video js-video drag-drop">Videos <span class="remove js-remove">[X]</span></div>
+                </div>
+            </div>
 
+            <div class="row videos js-videos">
+                <div class="col_1">
+                    <div class="video js-video drag-drop">Videos <span class="remove js-remove">[X]</span></div>
+                </div>
+                <div class="col_1">
+                    <div class="video js-video drag-drop">Videos <span class="remove js-remove">[X]</span></div>
+                </div>
+                <div class="col_1">
+                    <div class="video js-video drag-drop">Videos <span class="remove js-remove">[X]</span></div>
+                </div>
+                <div class="col_1">
+                    <div class="video js-video drag-drop">Videos <span class="remove js-remove">[X]</span></div>
+                </div>
+                <div class="col_1">
+                    <div class="video js-video drag-drop">Videos <span class="remove js-remove">[X]</span></div>
+                </div>
+            </div>
 
-
-
-
-        <!-- <div id="videoBox" ondrop="drop(event)" ondragover="allowDrop(event)">
-            
+            <div class="row videos js-videos">
+                <div class="col_1">
+                    <div class="video js-video drag-drop">Videos <span class="remove js-remove">[X]</span></div>
+                </div>
+                <div class="col_1">
+                    <div class="video js-video drag-drop">Videos <span class="remove js-remove">[X]</span></div>
+                </div>
+                <div class="col_1">
+                    <div class="video js-video drag-drop">Videos <span class="remove js-remove">[X]</span></div>
+                </div>
+                <div class="col_1">
+                    <div class="video js-video drag-drop">Videos <span class="remove js-remove">[X]</span></div>
+                </div>
+                <div class="col_1">
+                    <div class="video js-video drag-drop">Videos <span class="remove js-remove">[X]</span></div>
+                </div>
+            </div>
         </div>
-        <div id="keuzeBox" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="draggable">
-                <video id="video1" draggable="true" ondragstart="drag(event)" ondrop="event.cancelBubble=true;" width="320" height="300" controls>
-                    <source src="videos/testVideo.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="draggable">
-                <img id="video2" draggable="true" ondragstart="drag(event)" ondrop="event.cancelBubble=true;" width="320" height="300" src="videos/testFoto.jpg">
-            </div>
-            <div class="draggable">
-                <img id="video3" draggable="true" ondragstart="drag(event)" ondrop="event.cancelBubble=true;" width="320" height="300" src="videos/testFoto2.jpg">
-            </div>
-        </div> -->
     </main>
 </body>
-
 
 </html>
