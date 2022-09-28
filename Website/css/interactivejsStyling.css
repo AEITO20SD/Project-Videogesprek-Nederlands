@@ -28,9 +28,11 @@
   }
   
   .dz {
-    background-color: #bfe4ff;
+    background-color: #D9E8FF;
+    width: 210px;
+    height: 150px;
     border: dashed 4px transparent;
-    border-radius: 4px;
+    border-radius: 15px;
     margin: 5rem 0 0 4rem;
     padding: 10px;
     transition: background-color 0.3s;
@@ -51,12 +53,13 @@
     min-width: 40px;
     padding: 1em 0.5em;
     margin: 2rem 0 0 4rem;
-    width: 150px;
-    height: 100px;
+    width: 210px;
+    height: 150px;
   
     color: #fff;
     background-color: #29e;
     border: solid 2px #fff;
+    border-radius: 15px;
   
     touch-action: none;
     transform: translate(0px, 0px);
