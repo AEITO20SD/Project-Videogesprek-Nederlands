@@ -35,6 +35,12 @@ h1{
     position: absolute;
 }
 
+#textVideo {
+    position: relative;
+    margin-bottom: 60px;
+    top: 70px;
+}
+
 h2{
     color: whitesmoke;
     font-size: 14px;
