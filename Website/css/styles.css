@@ -8,10 +8,17 @@
 }
 
 html, body{
-    background-color: #F6F3EF;
+    background-color: #D9E8FF;
     overflow: hidden;
     max-width: 100%;
     max-height: 100%;
+}
+
+.container {
+    background-color: #0055A3;
+    margin: auto;
+    height: 230px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
 }
 
 h1{
@@ -49,7 +56,7 @@ h2{
 
 .container {
     margin: auto;
-    height: 230px;
+    height: 330px;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
 }
 
