@@ -159,4 +159,57 @@ h2{
   
     transition: background-color 0.3s;
   }
-  
+
+.questionBox {
+    background-color: rgba(0,0,0,0.6);
+    width:100vw;
+    height: 100vh;
+    position: absolute;
+    top:0;
+    left:0;
+    display: none;
+}
+
+.questionBoxContent {
+    background-color:#0055A3;
+    color: white;
+    border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    width: 30%;
+    margin:0 auto;
+    text-align: center;
+    padding: 12px;
+    position: relative;
+    top: 20%;
+}
+
+.questionButton {
+    right: 6%;
+    position: absolute;
+    cursor: pointer;
+    color: #fff;
+    font-size: 30px;
+    background: none;
+    border: none;
+    top: 20px;
+}
+
+.questionButton:hover {
+    color: #adb6bb;
+}
+
+.close {
+    border: none;
+    background: none;
+    left: 100%;
+    position: sticky;
+    cursor: pointer;
+    color: #fff;
+    font-size: inherit;
+    font: normal;
+    bottom: 100%;
+}
+
+.close:hover {
+    color: #14213d;
+}
