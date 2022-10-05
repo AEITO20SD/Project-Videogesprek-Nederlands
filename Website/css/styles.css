@@ -156,6 +156,7 @@ h2{
     touch-action: none;
     transform: translate(0px, 0px);
     transition: background-color 0.3s;
+      cursor: pointer;
   }
 
 .questionBox {
@@ -204,10 +205,24 @@ h2{
     cursor: pointer;
     color: #fff;
     font-size: inherit;
-    font: normal;
     bottom: 100%;
 }
 
 .close:hover {
     color: #14213d;
+}
+
+.delete{
+    fill: #EF5858;
+    position: absolute;
+    top: -14px;
+    left: 164px;
+    cursor: pointer;
+}
+
+.delete-cross{
+    position: absolute;
+    top: -9px;
+    left: 169px;
+    cursor: pointer;
 }
