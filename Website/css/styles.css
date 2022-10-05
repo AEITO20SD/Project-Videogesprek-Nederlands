@@ -142,21 +142,19 @@ h2{
   }
   
   .drag-drop {
-    display: inline-block;
+    display: flex;
+      justify-content: space-between;
     min-width: 180px;
     padding: 1em 0.5em;
     margin: 0 0 1rem 4rem;
     width: 180px;
     height: 120px;
-  
     color: #fff;
     background-color: #29e;
     border: solid 2px #fff;
     border-radius: 15px;
-  
     touch-action: none;
     transform: translate(0px, 0px);
-  
     transition: background-color 0.3s;
   }
 
