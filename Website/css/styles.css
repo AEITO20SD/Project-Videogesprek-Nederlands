@@ -228,7 +228,8 @@ h2 {
 }
 
 .delete-cross {
-    position: inherit;
-
+    width: 25px;
+    height: 25px;
+    margin: auto;
 }
 
