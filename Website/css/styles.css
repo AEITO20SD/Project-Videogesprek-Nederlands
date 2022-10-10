@@ -233,3 +233,7 @@ h2 {
     margin: auto;
 }
 
+.checkButton {
+    right: 6%;
+    position: absolute;
+}
