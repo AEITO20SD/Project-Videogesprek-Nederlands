@@ -1,0 +1,39 @@
+{
+    "videos": [
+        {   
+            "id": 1,
+            "name": "video1",
+            "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+            "category": "intro",
+            "tone": "formeel"
+        },
+        {
+            "id": 2,
+            "name": "video2",
+            "url": "",
+            "category": "gespreksonderwerp",
+            "tone": "formeel"
+        },
+        {
+            "id": 3,
+            "name": "video3",
+            "url": "",
+            "category": "kern",
+            "tone": "formeel"
+        },
+        {
+            "id": 4,
+            "name": "video4",
+            "url": "",
+            "category": "reactie",
+            "tone": "formeel"
+        },
+        {
+            "id": 5,
+            "name": "video5",
+            "url": "",
+            "category": "slot",
+            "tone": "formeel"
+        }
+    ]
+}
