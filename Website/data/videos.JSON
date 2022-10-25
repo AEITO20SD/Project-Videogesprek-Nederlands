@@ -34,6 +34,76 @@
             "url": "",
             "category": "slot",
             "tone": "formeel"
+        },
+        {
+            "id": 6,
+            "name": "video6",
+            "url": "",
+            "category": "intro",
+            "tone": "informeel"
+        },
+        {
+            "id": 7,
+            "name": "video7",
+            "url": "",
+            "category": "gespreksonderwerp",
+            "tone": "informeel"
+        },
+        {
+            "id": 8,
+            "name": "video8",
+            "url": "",
+            "category": "kern",
+            "tone": "informeel"
+        },
+        {
+            "id": 9,
+            "name": "video9",
+            "url": "",
+            "category": "reactie",
+            "tone": "formeel"
+        },
+        {
+            "id": 10,
+            "name": "video10",
+            "url": "",
+            "category": "slot",
+            "tone": "informeel"
+        },
+        {
+            "id": 11,
+            "name": "video11",
+            "url": "",
+            "category": "intro",
+            "tone": "nonchalant"
+        },
+        {
+            "id": 12,
+            "name": "video12",
+            "url": "",
+            "category": "gespreksonderwerp",
+            "tone": "nonchalant"
+        },
+        {
+            "id": 13,
+            "name": "video13",
+            "url": "",
+            "category": "kern",
+            "tone": "nonchalant"
+        },
+        {
+            "id": 14,
+            "name": "video14",
+            "url": "",
+            "category": "reactie",
+            "tone": "nonchalant"
+        },
+        {
+            "id": 15,
+            "name": "video15",
+            "url": "",
+            "category": "slot",
+            "tone": "nonchalant"
         }
     ]
 }
