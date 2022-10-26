@@ -175,10 +175,10 @@ h2 {
     color: white;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    width: 40%;
+    width: 50%;
     margin: 0 auto;
     text-align: left;
-    padding: 12px;
+    padding: 25px 75px;
     position: relative;
     top: 20%;
 }
