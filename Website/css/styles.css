@@ -17,7 +17,7 @@ html, body {
 .container {
     background-color: #0055A3;
     margin: auto;
-    height: 240px;
+    height: 230px;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
 }
 
@@ -34,6 +34,13 @@ h1 {
 
 #textContainer {
     position: absolute;
+    margin-top: 10px;
+}
+
+#textContainerSecondairy{
+    margin-bottom: 10px;
+    color: #0055A3;
+    margin-top: 50px;
 }
 
 #textVideo {
@@ -74,9 +81,10 @@ h2 {
 
 .row {
     display: flex;
-    margin-left: -15px;
-    margin-right: -15px;
-    transition: ease 2s;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-left: 12vw;
+    margin-right: 12vw;
 }
 
 .rowVideo {
@@ -92,7 +100,10 @@ h2 {
     padding-right: 15px;
     flex-direction: column;
     align-content: center;
+    justify-content: space-evenly;
+    align-items: center;
 }
+
 
 .col_2 {
     flex: 2;
@@ -134,7 +145,7 @@ h2 {
     height: 120px;
     border: dashed 4px transparent;
     border-radius: 15px;
-    margin: 5rem 0 0 4rem;
+    margin: 3rem 0 0 0;
     padding: 10px;
     transition: background-color 0.3s;
     display: flex;
@@ -147,7 +158,7 @@ h2 {
     justify-content: space-between;
     min-width: 180px;
     padding: 1em 0.5em;
-    margin: 0 0 1rem 4rem;
+    margin: 0 0 1rem 0;
     width: 180px;
     height: 120px;
     color: #fff;
@@ -234,7 +245,8 @@ h2 {
 }
 
 .checkButton {
-    right: 6%;
+    right: 3%;
+    top: 20%;
     position: absolute;
     color: white;
     background: #F6D11C;
@@ -242,6 +254,7 @@ h2 {
     width: 100px;
     height: 30px;
     border-radius: 10px;
+    cursor: pointer;
 }
 html,
 body {
@@ -261,11 +274,10 @@ body {
 }
 
 #checkboxSpan {
-    position: absolute;
+    position: relative;
     color: black;
     display: none;
-    left: 230px;
-    top: 200px;
+    top: 15px;
 }
 
 .wrapper {
