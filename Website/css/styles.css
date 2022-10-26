@@ -14,12 +14,18 @@ html, body {
     max-height: 100%;
 }
 
-.container {
+#tijdlijnContainer {
+    display: flex;
+    flex-direction: column;
     background-color: #0055A3;
     margin: auto;
-    height: 230px;
+    height: 235px;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
 }
+
+#videoContainer {
+}
+
 
 .title {
     width: 100vw;
@@ -40,7 +46,6 @@ h1 {
 #textContainerSecondairy{
     margin-bottom: 10px;
     color: #0055A3;
-    margin-top: 50px;
 }
 
 #textVideo {
@@ -87,10 +92,29 @@ h2 {
     margin-right: 12vw;
 }
 
+.spaceRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-right: 4rem;
+    margin-top: 1.3rem;
+}
+
 .rowVideo {
     display: flex;
     margin-left: -15px;
     margin-right: -15px;
+}
+
+.col{
+    display: flex;
+    flex: 1;
+    padding-left: 15px;
+    padding-right: 15px;
+    flex-direction: column;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .col_1 {
@@ -143,14 +167,15 @@ h2 {
     background-color: #D9E8FF;
     width: 180px;
     height: 120px;
-    border: dashed 4px transparent;
+    border: dashed 3px transparent;
     border-radius: 15px;
-    margin: 3rem 0 0 0;
+    margin: 1rem 0 0 0;
     padding: 10px;
     transition: background-color 0.3s;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 0.5s ease;
 }
 
 .drag-drop {
@@ -195,21 +220,23 @@ h2 {
 }
 
 .questionButton {
-    right: 6%;
+    right: 1%;
+    top: 1%;
     position: absolute;
     cursor: pointer;
     color: #fff;
     font-size: 30px;
     background: none;
     border: none;
-    top: 20px;
+    opacity: 0.7;
 }
 
-.questionButton:hover {
-    color: #adb6bb;
+.questionButton:hover{
+    opacity: 1;
+    transition: 0.5s ease;
 }
 
-.close {
+.closeButton {
     border: none;
     background: none;
     left: 100%;
@@ -218,10 +245,12 @@ h2 {
     color: #fff;
     font-size: inherit;
     bottom: 100%;
+    opacity: 0.7;
 }
 
-.close:hover {
-    color: #14213d;
+.closeButton:hover {
+    opacity: 1.0;
+    transition: 0.5s ease;
 }
 
 .delete {
@@ -245,9 +274,8 @@ h2 {
 }
 
 .checkButton {
-    right: 3%;
-    top: 20%;
-    position: absolute;
+    position: relative;
+    margin-top: -10px;
     color: white;
     background: #F6D11C;
     border: 0;
@@ -255,7 +283,15 @@ h2 {
     height: 30px;
     border-radius: 10px;
     cursor: pointer;
+    transition: 0.5s ease;
 }
+
+.checkButton:hover{
+    background: #7AC142;
+    transition: 0.5s ease;
+
+}
+
 html,
 body {
   height: 100%;
