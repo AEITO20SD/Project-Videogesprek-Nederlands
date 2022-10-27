@@ -9,26 +9,41 @@ function closeQuestion() {
 } 
 
 function checkInput() {
-    var x = document.getElementsByClassName("dropzone");
-    const videoBox = document.querySelector('.js-dropzone');
+    var video = document.getElementsByClassName("dropzone");
+    // const videoBox = document.querySelector('.js-dropzone');
     var success = true;
 
-    if (videoBox.childNodes.length <= 0) {
-        success = false;
-        setErrorFor(videoBox)
-    } else {
-        setSuccessFor(videoBox)
-    }
+    // for(var video in videos){
+    //     if (video.childNodes.length <= 0) {
+    //         success = false;
+    //         setErrorFor(video);
+    //     } else {
+    //         setSuccessFor(video);
+    //     }
+    //     return success;
+    // }   
 
+    for(var x = 0; x < video.length; x++){
+        if (video.childNodes.length <= 0) {
+            success = false;
+            setErrorFor(video);
+        } else {
+            setSuccessFor(video);
+        }
+        return success;
+    }   
 
-    return success;
-    // Als er geen child div in de js-dropzone zit pas setError toe, als child div aanwezig is pas setSucces toe
-    // for each box without child element give setError 
+    // if (videoBox.childNodes.length <= 0) {
+    //     success = false;
+    //     setErrorFor(videoBox)
+    // } else {
+    //     setSuccessFor(videoBox)
+    // }
 }
 
 function setErrorFor() {
-    const boxControl = document.querySelector('.js-dropzone');
-    // const boxControl = document.getElementsByClassName("dropzone");
+    // const boxControl = document.querySelector('.js-dropzone');
+    var boxControl = document.getElementsByClassName("dropzone");
     boxControl.style.borderColor = "#ff2d4a";
     const small = boxControl.parentElement.querySelector('small');
     small.style.display = "block";
@@ -38,8 +53,8 @@ function setErrorFor() {
 }
 
 function setSuccessFor() {
-    const boxControl = document.querySelector('.js-dropzone');
-    // const boxControl = document.getElementsByClassName("dropzone");
+    // const boxControl = document.querySelector('.js-dropzone');
+    var boxControl = document.getElementsByClassName("dropzone");
     boxControl.style.borderColor = "white";
     const small = boxControl.parentElement.querySelector('small');
     small.style.display = "none";
