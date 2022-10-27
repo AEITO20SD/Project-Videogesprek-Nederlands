@@ -14,12 +14,18 @@ html, body {
     max-height: 100%;
 }
 
-.container {
+#tijdlijnContainer {
+    display: flex;
+    flex-direction: column;
     background-color: #0055A3;
     margin: auto;
-    height: 240px;
+    height: 235px;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
 }
+
+#videoContainer {
+}
+
 
 .title {
     width: 100vw;
@@ -34,6 +40,12 @@ h1 {
 
 #textContainer {
     position: absolute;
+    margin-top: 10px;
+}
+
+#textContainerSecondairy{
+    margin-bottom: 10px;
+    color: #0055A3;
 }
 
 #textVideo {
@@ -74,15 +86,35 @@ h2 {
 
 .row {
     display: flex;
-    margin-left: -15px;
-    margin-right: -15px;
-    transition: ease 2s;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-left: 12vw;
+    margin-right: 12vw;
+}
+
+.spaceRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-right: 4rem;
+    margin-top: 1.3rem;
 }
 
 .rowVideo {
     display: flex;
     margin-left: -15px;
     margin-right: -15px;
+}
+
+.col{
+    display: flex;
+    flex: 1;
+    padding-left: 15px;
+    padding-right: 15px;
+    flex-direction: column;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .col_1 {
@@ -92,7 +124,10 @@ h2 {
     padding-right: 15px;
     flex-direction: column;
     align-content: center;
+    justify-content: space-evenly;
+    align-items: center;
 }
+
 
 .col_2 {
     flex: 2;
@@ -132,14 +167,15 @@ h2 {
     background-color: #D9E8FF;
     width: 180px;
     height: 120px;
-    border: dashed 4px transparent;
+    border: dashed 3px transparent;
     border-radius: 15px;
-    margin: 5rem 0 0 4rem;
+    margin: 1rem 0 0 0;
     padding: 10px;
     transition: background-color 0.3s;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 0.5s ease;
 }
 
 .drag-drop {
@@ -147,7 +183,7 @@ h2 {
     justify-content: space-between;
     min-width: 180px;
     padding: 1em 0.5em;
-    margin: 0 0 1rem 4rem;
+    margin: 0 0 1rem 0;
     width: 180px;
     height: 120px;
     color: #fff;
@@ -175,30 +211,32 @@ h2 {
     color: white;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    width: 30%;
+    width: 50%;
     margin: 0 auto;
-    text-align: center;
-    padding: 12px;
+    text-align: left;
+    padding: 25px 75px;
     position: relative;
     top: 20%;
 }
 
 .questionButton {
-    right: 6%;
+    right: 1%;
+    top: 1%;
     position: absolute;
     cursor: pointer;
     color: #fff;
     font-size: 30px;
     background: none;
     border: none;
-    top: 20px;
+    opacity: 0.7;
 }
 
-.questionButton:hover {
-    color: #adb6bb;
+.questionButton:hover{
+    opacity: 1;
+    transition: 0.5s ease;
 }
 
-.close {
+.closeButton {
     border: none;
     background: none;
     left: 100%;
@@ -207,10 +245,12 @@ h2 {
     color: #fff;
     font-size: inherit;
     bottom: 100%;
+    opacity: 0.7;
 }
 
-.close:hover {
-    color: #14213d;
+.closeButton:hover {
+    opacity: 1.0;
+    transition: 0.5s ease;
 }
 
 .delete {
@@ -234,9 +274,24 @@ h2 {
 }
 
 .checkButton {
-    right: 6%;
-    position: absolute;
+    position: relative;
+    margin-top: -10px;
+    color: white;
+    background: #F6D11C;
+    border: 0;
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.5s ease;
 }
+
+.checkButton:hover{
+    background: #7AC142;
+    transition: 0.5s ease;
+
+}
+
 html,
 body {
   height: 100%;
@@ -252,4 +307,125 @@ body {
 
 .dropzone .drag-drop {
   margin: 0;
+}
+
+#checkboxSpan {
+    position: relative;
+    color: black;
+    display: none;
+    top: 15px;
+}
+
+.crossboxSpan {
+    position: relative;
+    color: black;
+    display: none;
+    top: 15px;
+}
+
+.wrapper {
+    height: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #eee
+}
+
+.checkmark_circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+    stroke: #7ac142;
+    fill: none;
+    animation: checkstroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards
+}
+
+.checkmark {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 2;
+    stroke: #fff;
+    stroke-miterlimit: 10;
+    margin: 10% auto;
+    box-shadow: inset 0px 0px 0px #7ac142;
+    animation: checkfill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both
+}
+
+.checkmark_check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: checkstroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards
+}
+
+@keyframes checkstroke {
+    100% {
+        stroke-dashoffset: 0
+    }
+}
+
+@keyframes checkscale {
+    0%, 100% {
+        transform: none
+    }
+    50% {
+        transform: scale3d(1.1, 1.1, 1)
+    }
+}
+
+@keyframes checkfill {
+    100% {
+        box-shadow: inset 0px 0px 0px 30px #7ac142
+    }
+}
+
+.crossmark {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 2;
+    stroke: #fff;
+    stroke-miterlimit: 10;
+    box-shadow: inset 0px 0px 0px #EF5858;
+    animation: crossfill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+}
+
+.crossmark_circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+    stroke: #EF5858;
+    fill: none;
+    animation: crossstroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.crossmark_check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: crossstroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+@keyframes crossstroke {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+@keyframes crossscale {
+    0%, 100% {
+        transform: none;
+    }
+    50% {
+        transform: scale3d(1.1, 1.1, 1);
+    }
+}
+@keyframes crossfill {
+    100% {
+        box-shadow: inset 0px 0px 0px 30px #EF5858;
+    }
 }

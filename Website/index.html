@@ -21,11 +21,11 @@
 
   </head>
   <body>
-    <header></header>
     <main>
-      <div class="container">
+      <div id="tijdlijnContainer">
         <div class="title">
           <h1 id="textContainer">Tijdlijn</h1>
+          <div class="spaceRow"><button class="checkButton" onclick="checkInput()">Check</button></div>
         </div>
 
         <button class="questionButton" onclick="openQuestion()">
@@ -46,31 +46,40 @@
         </button>
 
         <div class="row dropzones js-dropzones">
-          <div class="col_1">
+          <div class="col">
             <div class="dropzone js-dropzone"></div>
             <h2>Introductie</h2>
+            <small hidden>U moet een video selecteren.</small>
+            <span id="checkboxSpan"><div class="wrapper"> <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"> <circle class="checkmark_circle" cx="26" cy="26" r="25" fill="none"/> <path class="checkmark_check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg></div></span>
+            <span class="crossboxSpan"><div class="wrapper"><svg class="crossmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="crossmark_circle" cx="26" cy="26" r="25" fill="none"/><path class="crossmark_check" fill="none" d="M14.1 14.1l23.8 23.8 m0,-23.8 l-23.8,23.8"/></svg></div></span>
           </div>
-          <div class="col_1">
+          <div class="col">
             <div class="dropzone js-dropzone"></div>
             <h2>Gespreksonderwerp</h2>
+            <small hidden>U moet een video selecteren.</small>
           </div>
-          <div class="col_1">
+          <div class="col">
             <div class="dropzone js-dropzone"></div>
             <h2>Kern</h2>
+            <small hidden>U moet een video selecteren.</small>
           </div>
-          <div class="col_1">
+          <div class="col">
             <div class="dropzone js-dropzone"></div>
             <h2>Reactie</h2>
+            <small hidden>U moet een video selecteren.</small>
           </div>
-          <div class="col_1">
+          <div class="col">
             <div class="dropzone js-dropzone"></div>
             <h2>Slot</h2>
+            <small hidden>U moet een video selecteren.</small>
           </div>
         </div>
+      </div>
 
-       <button class="checkButton" onclick="checkInput()">Check</button>
-        <div class="title">
-          <h1 style="margin-bottom: 15px; color: #0055A3;">Video's</h1>
+      <div class="videoContainer">
+        <div class="col-videos">
+          <div class="title">
+          <h1 id="textContainerSecondairy">Video's</h1>
         </div>
         
         
@@ -80,9 +89,24 @@
 
       <div class="questionBox" id="questionBox">
         <div class="questionBoxContent">
-          <button class="close" onclick="closeQuestion()">&#10148;</button>
-          <h3>"Edwin stuurt tekst"</h3>
+
+          <h4>Uitleg opdracht</h4><button class="closeButton" onclick="closeQuestion()"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 40 40">
+          <path id="Icon_awesome-arrow-circle-right" data-name="Icon awesome-arrow-circle-right" d="M18,.563A17.438,17.438,0,1,1,.563,18,17.434,17.434,0,0,1,18,.563Zm-2.032,10.1,5.309,5.091H8.438A1.683,1.683,0,0,0,6.75,17.438v1.125A1.683,1.683,0,0,0,8.438,20.25H21.277l-5.309,5.091a1.689,1.689,0,0,0-.028,2.412l.773.766a1.681,1.681,0,0,0,2.384,0l9.33-9.323a1.681,1.681,0,0,0,0-2.384L19.1,7.474a1.681,1.681,0,0,0-2.384,0l-.773.766a1.7,1.7,0,0,0,.028,2.419Z" transform="translate(-0.563 -0.563)" fill="#fff"/>
+        </svg>
+        </button>
+          <br>
+          <h5 style="font-size: 14px">Er zijn vele manieren voor het voeren van een goed zakelijk gesprek.
+            In deze opdracht bekijk je een ontslaggesprek. Kies 5 fragmenten uit 
+            het lichtgekleurde gedeelte van de pagina en sleep ze naar het donkerder 
+            gekleurde gedeelte aan de bovenkant van de pagina. Zet de fragmenten in de 
+            volgorde waarvan jij denkt dat ze achter elkaar een goed zakelijk gesprek vormen. 
+            Let op: er blijven dus fragmenten over.</h5>
+            <br>
+          <h5 style="font-size: 14px">Heb je 5 fragmenten in de juiste volgorde geselecteerd?
+            Kijk dan met de 'check'-knop rechtsboven op de pagina hoeveel 
+            elementen je op de juiste plek hebt neergezet.</h5>
         </div>
+      </div>
       </div>
     </main>
   </body>
