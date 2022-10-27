@@ -1,9 +1,23 @@
 $.get('./data/videos.JSON', function(d) {
   
-  //shuffledVideoList = shuffle(d);
+  shuffledVideoList = shuffle(d.videos);
 
   console.log(d);
-  //console.log(shuffledVideoList);
+  console.log(shuffledVideoList);
+
+
+  //Source: https://stackoverflow.com/a/3718452 // https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm
+  function shuffle(sourceArray) {
+    for (var i = 0; i < sourceArray.length - 1; i++) {
+        var j = i + Math.floor(Math.random() * (sourceArray.length - i));
+
+        var temp = sourceArray[j];
+        sourceArray[j] = sourceArray[i];
+        sourceArray[i] = temp;
+    }
+    return sourceArray;
+}
+
 
   for(let i = 0; i < Object.keys(d.videos).length; i++) {
     if(i % 5 === 0) {
