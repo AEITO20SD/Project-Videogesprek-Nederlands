@@ -28,7 +28,7 @@ function setErrorFor(boxControl) {
     const small = boxControl.parentElement.querySelector('small');
     small.style.display = "block";
     small.style.color = "#ff2d4a";
-    const span = document.getElementById('checkboxSpan');
+    const span = boxControl.parentElement.querySelector('#checkboxSpan');
     span.style.display = "none";
 }
 
@@ -36,6 +36,6 @@ function setSuccessFor(boxControl) {
     boxControl.style.borderColor = "white";
     const small = boxControl.parentElement.querySelector('small');
     small.style.display = "none";
-    const span = document.getElementById('checkboxSpan');
+    const span = boxControl.parentElement.querySelector('#checkboxSpan');
     span.style.display = "block";
 }
