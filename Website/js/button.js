@@ -9,68 +9,18 @@ function closeQuestion() {
 } 
 
 function checkInput() {
-    // var videos = document.querySelectorAll('.js-dropzone');
-    const videoBox = document.querySelector('.js-dropzone');
-    const videoBoxTwo = document.querySelector('#dropzone-1');
-    const videoBoxThree = document.querySelector('#dropzone-2');
-    const videoBoxFour = document.querySelector('#dropzone-3');
-    const videoBoxFive = document.querySelector('#dropzone-4');
+    var videos = document.querySelectorAll('.js-dropzone');
     var success = true;
 
-    // for(var video in videos){
-    //     if (videos.childNodes.length <= 0) {
-    //         success = false;
-    //         setErrorFor(video);
-    //     } else {
-    //         setSuccessFor(video);
-    //     }
-    //     return success;
-    // }   
+    for(var i = 0; i < videos.length; i++) {
+        var video = videos[i];
 
-    // for(var i = 0; i < child.length; i++){
-    //     if (child.length <= 0) {
-    //         success = false;
-    //         setErrorFor(videos);
-    //     } else {
-    //         setSuccessFor(videos);
-    //     }
-    //     return success;
-    // }   
-
-    if (videoBox.childNodes.length <= 0) {
-        success = false;
-        setErrorFor(videoBox)
-    } else {
-        setSuccessFor(videoBox)
+        setErrorFor(video);
+        if (video.childNodes.length > 0) {
+            setSuccessFor(video)
+        }
     }
-
-    if (videoBoxTwo.childNodes.length <= 0) {
-        success = false;
-        setErrorFor(videoBoxTwo)
-    } else {
-        setSuccessFor(videoBoxTwo)
-    }
-
-    if (videoBoxThree.childNodes.length <= 0) {
-        success = false;
-        setErrorFor(videoBoxThree)
-    } else {
-        setSuccessFor(videoBoxThree)
-    }
-
-    if (videoBoxFour.childNodes.length <= 0) {
-        success = false;
-        setErrorFor(videoBoxFour)
-    } else {
-        setSuccessFor(videoBoxFour)
-    }
-
-    if (videoBoxFive.childNodes.length <= 0) {
-        success = false;
-        setErrorFor(videoBoxFive)
-    } else {
-        setSuccessFor(videoBoxFive)
-    }
+    return success;
 }
 
 function setErrorFor(boxControl) {
