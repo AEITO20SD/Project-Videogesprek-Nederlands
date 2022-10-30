@@ -33,7 +33,7 @@ function setErrorFor(boxControl) {
 }
 
 function setSuccessFor(boxControl) {
-    boxControl.style.borderColor = "white";
+    boxControl.style.borderColor = "#7ac142";
     const small = boxControl.parentElement.querySelector('small');
     small.style.display = "none";
     const span = boxControl.parentElement.querySelector('#checkboxSpan');
