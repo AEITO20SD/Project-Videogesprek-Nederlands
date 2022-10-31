@@ -27,7 +27,6 @@ function placeVideos(d) {
 }
 
   for(let i = 0; i < Object.keys(shuffledVideoList).length; i++) {
-    
     currentVideo = shuffledVideoList[i];
     videoCodeBlock = `
       <div class="col">
@@ -68,9 +67,6 @@ function placeVideos(d) {
       </div>
       </div>
     `;
-
-
-
 
     if(i % 5 === 0) {
       k++;
