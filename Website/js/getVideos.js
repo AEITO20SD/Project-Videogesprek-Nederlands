@@ -30,8 +30,8 @@ function placeVideos(d) {
     
     currentVideo = shuffledVideoList[i];
     videoCodeBlock = `
-      <div class="col" onclick="openVideo()">
-      <div class="video js-video drag-drop">
+      <div class="col">
+      <div class="video js-video drag-drop" onclick="openVideo()">
         Videos
         ${currentVideo.id}
         <span class="remove js-remove">
@@ -83,13 +83,8 @@ function placeVideos(d) {
   }
 }
 
-
-
-
-
 function openVideo() {
-  var video = document.getElementById(shuffledVideoList.id);
-  video.style.display = "block";
+  console.log("open "+ videoCodeBlock);
 }
 
 function closeVideo() {
