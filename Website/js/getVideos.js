@@ -7,10 +7,12 @@ document.addEventListener("DOMContentLoaded", async function() {
   //document.dispatchEvent(new CustomEvent("Custom-VideosLoaded"));
   afterVideosLoaded();
 });
+let i = 0;
+let k = 0;
+
 
 function placeVideos(d) {
   shuffledVideoList = shuffle(d.videos);
-  let k = 0;
 
   //Source: https://stackoverflow.com/a/3718452 // https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm
   function shuffle(sourceArray) {
@@ -25,61 +27,64 @@ function placeVideos(d) {
 }
 
   for(let i = 0; i < Object.keys(shuffledVideoList).length; i++) {
+    
+    currentVideo = shuffledVideoList[i];
+    videoCodeBlock = `
+      <div class="col" onclick="openVideo()">
+      <div class="video js-video drag-drop">
+        Videos
+        ${currentVideo.id}
+        <span class="remove js-remove">
+          <svg class="delete"
+                xmlns="http://www.w3.org/2000/svg"
+                width="25"
+                height="25"
+                viewBox="0 0 34.56 34.56"
+          ><path
+                    id="Icon_map-circle"
+                    data-name="Icon map-circle"
+                    d="M35.28,18A17.28,17.28,0,1,1,18,.72,17.28,17.28,0,0,1,35.28,18Z"
+                    transform="translate(-0.72 -0.72)"
+            /><svg
+                class="delete-cross"
+                xmlns="http://www.w3.org/2000/svg"
+                width="25"
+                height="25"
+                viewBox="0 0 48 48"
+        ><path
+                    id="Icon_metro-cross"
+                    data-name="Icon metro-cross"
+                    d="M33.138,26.711h0l-9.358-9.358,9.358-9.358h0a.966.966,0,0,0,0-1.363L28.717,2.21a.967.967,0,0,0-1.363,0h0L18,11.568,8.637,2.21h0a.966.966,0,0,0-1.363,0L2.852,6.631a.966.966,0,0,0,0,1.363h0l9.358,9.358L2.852,26.711h0a.966.966,0,0,0,0,1.363l4.421,4.421a.966.966,0,0,0,1.363,0h0L18,23.136l9.358,9.358h0a.966.966,0,0,0,1.363,0l4.421-4.421a.966.966,0,0,0,0-1.363Z"
+                    transform="translate(15 15)"
+                    fill="#fff"
+            />
+          </svg>
+          </svg>
+        </span>
+      </div>
+      </div>
+    `;
+
+
+
+
     if(i % 5 === 0) {
-      console.log("should make new row");
       k++;
-      console.log(shuffledVideoList[i]);
 
       $(".js-videos").append('<div class="row videos js-row'+k+'">');
       $(".js-row"+[k]).append(videoCodeBlock);
 
     }
     else {
-      console.log("doesn't make a new row");
-      console.log(shuffledVideoList[i]);
 
       $(".js-row"+[k]).append(videoCodeBlock);
 
     }
   }
-
 }
 
 
-videoCodeBlock = `
-  <div class="col" onclick="openVideo()">
-  <div class="video js-video drag-drop">
-    Videos
-    <span class="remove js-remove">
-      <svg class="delete"
-            xmlns="http://www.w3.org/2000/svg"
-            width="25"
-            height="25"
-            viewBox="0 0 34.56 34.56"
-      ><path
-                id="Icon_map-circle"
-                data-name="Icon map-circle"
-                d="M35.28,18A17.28,17.28,0,1,1,18,.72,17.28,17.28,0,0,1,35.28,18Z"
-                transform="translate(-0.72 -0.72)"
-        /><svg
-            class="delete-cross"
-            xmlns="http://www.w3.org/2000/svg"
-            width="25"
-            height="25"
-            viewBox="0 0 48 48"
-    ><path
-                id="Icon_metro-cross"
-                data-name="Icon metro-cross"
-                d="M33.138,26.711h0l-9.358-9.358,9.358-9.358h0a.966.966,0,0,0,0-1.363L28.717,2.21a.967.967,0,0,0-1.363,0h0L18,11.568,8.637,2.21h0a.966.966,0,0,0-1.363,0L2.852,6.631a.966.966,0,0,0,0,1.363h0l9.358,9.358L2.852,26.711h0a.966.966,0,0,0,0,1.363l4.421,4.421a.966.966,0,0,0,1.363,0h0L18,23.136l9.358,9.358h0a.966.966,0,0,0,1.363,0l4.421-4.421a.966.966,0,0,0,0-1.363Z"
-                transform="translate(15 15)"
-                fill="#fff"
-        />
-      </svg>
-      </svg>
-    </span>
-  </div>
-  </div>
-`;
+
 
 
 function openVideo() {
