@@ -34,6 +34,10 @@ function placeVideos(d) {
       <div class="video js-video drag-drop">
         Videos
         ${currentVideo.id}
+        ${currentVideo.name}
+        ${currentVideo.url}
+        ${currentVideo.category}
+        ${currentVideo.tone}
         <span class="remove js-remove">
           <svg class="delete"
                 xmlns="http://www.w3.org/2000/svg"
