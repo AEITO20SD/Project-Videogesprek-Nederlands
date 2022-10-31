@@ -1,4 +1,14 @@
-$.get('./data/videos.JSON', function(d) {
+document.addEventListener("DOMContentLoaded", async function() {
+  const request = await (await fetch("./data/videos.JSON"));
+  const json = await request.json();
+
+  placeVideos(json);
+
+  //document.dispatchEvent(new CustomEvent("Custom-VideosLoaded"));
+  afterVideosLoaded();
+});
+
+function placeVideos(d) {
   shuffledVideoList = shuffle(d.videos);
   let k = 0;
 
@@ -33,7 +43,7 @@ $.get('./data/videos.JSON', function(d) {
     }
   }
 
-});
+}
 
 
 videoCodeBlock = `

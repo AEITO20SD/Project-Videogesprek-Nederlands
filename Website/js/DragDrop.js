@@ -1,7 +1,9 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("Custom-VideosLoaded", afterVideosLoaded);
+
+function afterVideosLoaded() {
   let id = 0;
 
-  this.body.addEventListener("dragend", dragend_handler);
+  document.body.addEventListener("dragend", dragend_handler);
 
   document.querySelectorAll(".js-dropzones .js-dropzone").forEach((n) => {
     n.id = `dropzone-${id++}`;
@@ -10,7 +12,11 @@ document.addEventListener("DOMContentLoaded", function () {
     n.addEventListener("dragover", dragover_handler);
   });
 
+  console.log(document.querySelectorAll(".js-videos .js-video"));
+
   document.querySelectorAll(".js-videos .js-video").forEach((n) => {
+    console.log(n);
+
     n.id = `video-${id++}`;
 
     n.parentElement.id = `parent-${n.id}`;
@@ -22,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
       sendVideoBackToOriginalLocation(n);
     });
   });
-});
+}
 
 let draggedElement = undefined;
 
