@@ -1,5 +1,6 @@
 $.get('./data/videos.JSON', function(d) {
   shuffledVideoList = shuffle(d.videos);
+  let k = 0;
 
   //Source: https://stackoverflow.com/a/3718452 // https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm
   function shuffle(sourceArray) {
@@ -16,19 +17,18 @@ $.get('./data/videos.JSON', function(d) {
   for(let i = 0; i < Object.keys(shuffledVideoList).length; i++) {
     if(i % 5 === 0) {
       console.log("should make new row");
-      k = 0;
       k++;
       console.log(shuffledVideoList[i]);
 
-      $(".js-videos").append(`<div class="row videos js-row">`);
-      $(".js-row[k]").append(videoCodeBlock);
+      $(".js-videos").append('<div class="row videos js-row'+k+'">');
+      $(".js-row"+[k]).append(videoCodeBlock);
 
     }
     else {
       console.log("doesn't make a new row");
       console.log(shuffledVideoList[i]);
 
-      $(".js-row").append(videoCodeBlock);
+      $(".js-row"+[k]).append(videoCodeBlock);
 
     }
   }
