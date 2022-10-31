@@ -19,7 +19,6 @@
     function disableVideos(video)
     {
         draggedVideo = document.getElementById(video);
-        console.log("test");
         draggedVideo.classList.add("dragged");
     }
 
@@ -48,7 +47,6 @@
         //var videoIndex = getRandomInt(videoList.length);
 
         shuffle(videoList);
-        console.log(videoList);
         
         for (var i = 1; i <= 3; i++)
         {

@@ -12,10 +12,7 @@ function afterVideosLoaded() {
     n.addEventListener("dragover", dragover_handler);
   });
 
-  console.log(document.querySelectorAll(".js-videos .js-video"));
-
   document.querySelectorAll(".js-videos .js-video").forEach((n) => {
-    console.log(n);
 
     n.id = `video-${id++}`;
 
