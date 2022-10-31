@@ -9,40 +9,33 @@ function closeQuestion() {
 } 
 
 function checkInput() {
-    var x = document.getElementsByClassName("dropzone");
-    const videoBox = document.querySelector('.js-dropzone');
+    var videos = document.querySelectorAll('.js-dropzone');
     var success = true;
 
-    if (videoBox.childNodes.length <= 0) {
-        success = false;
-        setErrorFor(videoBox)
-    } else {
-        setSuccessFor(videoBox)
+    for(var i = 0; i < videos.length; i++) {
+        var video = videos[i];
+
+        setErrorFor(video);
+        if (video.childNodes.length > 0) {
+            setSuccessFor(video)
+        }
     }
-
-
     return success;
-    // Als er geen child div in de js-dropzone zit pas setError toe, als child div aanwezig is pas setSucces toe
-    // for each box without child element give setError 
 }
 
-function setErrorFor() {
-    const boxControl = document.querySelector('.js-dropzone');
-    // const boxControl = document.getElementsByClassName("dropzone");
+function setErrorFor(boxControl) {
     boxControl.style.borderColor = "#ff2d4a";
     const small = boxControl.parentElement.querySelector('small');
     small.style.display = "block";
     small.style.color = "#ff2d4a";
-    const span = document.getElementById('checkboxSpan');
+    const span = boxControl.parentElement.querySelector('#checkboxSpan');
     span.style.display = "none";
 }
 
-function setSuccessFor() {
-    const boxControl = document.querySelector('.js-dropzone');
-    // const boxControl = document.getElementsByClassName("dropzone");
-    boxControl.style.borderColor = "white";
+function setSuccessFor(boxControl) {
+    boxControl.style.borderColor = "#7ac142";
     const small = boxControl.parentElement.querySelector('small');
     small.style.display = "none";
-    const span = document.getElementById('checkboxSpan');
+    const span = boxControl.parentElement.querySelector('#checkboxSpan');
     span.style.display = "block";
 }
