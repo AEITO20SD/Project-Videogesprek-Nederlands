@@ -47,7 +47,7 @@ function placeVideos(d) {
 
 
 videoCodeBlock = `
-  <div class="col">
+  <div class="col" onclick="openVideo()">
   <div class="video js-video drag-drop">
     Videos
     <span class="remove js-remove">
@@ -79,8 +79,18 @@ videoCodeBlock = `
     </span>
   </div>
   </div>
-`; 
+`;
 
+
+function openVideo() {
+  var video = document.getElementById(shuffledVideoList.id);
+  video.style.display = "block";
+}
+
+function closeVideo() {
+  var video = document.getElementById(shuffledVideoList.id);
+  video.style.display = "none";
+}
 
 //   d.videos.forEach(function(b) {
 //       $("js-row").append(`<div class="row videos js-videos">`)
