@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   assignment = assignmentJson.opdrachten.find((e) => e.id == assignmentId);
 
   if (!assignment) {
+    //TODO: nette error afhandeling maken
     return;
   }
 
@@ -39,9 +40,11 @@ function placeVideos(videos) {
   for (let i = 0; i < shuffledVideoList.length; i++) {
     let currentVideo = shuffledVideoList[i];
 
+    //hierin kan je relevante data meegeven. denk aan bijvoorbeeld de locatie van een video
     const videoBlock = document
       .getElementById("video-block")
       .content.cloneNode(true);
+      
     videoBlock.querySelector(".js-video").dataset["videoId"] = currentVideo.id;
     videoBlock.querySelector(".js-video-source").src = currentVideo.url;
     videoBlock.querySelector(".js-title").innerHTML = `Videos
@@ -51,7 +54,7 @@ function placeVideos(videos) {
     ${currentVideo.category}
     ${currentVideo.tone}`;
 
-
+    // vul de rij met videos todat er 5 in staan, maakt daarna een nieuwe rij aan
     if (i % 5 === 0) {
       k++;
 
