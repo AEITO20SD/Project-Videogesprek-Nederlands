@@ -58,14 +58,14 @@ function placeVideos(videos) {
       let videos = document.querySelector(".js-videos");
 
       let row = document.createElement("div");
-      row.classList.add("row", "videos", "js-row" + k);
+      row.classList.add("row", "videos", "js-row-" + k);
       //row.innerHTML = videoCodeBlock;
       row.appendChild(videoBlock);
 
       videos.appendChild(row);
     } else {
       //document.querySelector(".js-row" + k).innerHTML += videoCodeBlock;
-      document.querySelector(".js-row" + k).appendChild(videoBlock);
+      document.querySelector(".js-row-" + k).appendChild(videoBlock);
     }
   }
 }
