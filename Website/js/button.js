@@ -25,7 +25,7 @@ function checkInput() {
             }
             else {
                 //Video is niet correct
-                setErrorFor(video);  
+                setWrongFor(video);  
                 
                 success = false;
             }
@@ -54,6 +54,16 @@ function setErrorFor(boxControl) {
     small.style.color = "#ff2d4a";
     const span = boxControl.parentElement.querySelector('#checkboxSpan');
     span.style.display = "none";
+    const crossboxSpan = boxControl.parentElement.querySelector('.crossboxSpan');
+    crossboxSpan.style.display = "none";
+}
+
+function setWrongFor(boxControl) {
+    boxControl.style.borderColor = "#c44848";
+    const small = boxControl.parentElement.querySelector('small');
+    small.style.display = "none";
+    const span = boxControl.parentElement.querySelector('.crossboxSpan');
+    span.style.display = "block";
 }
 
 function setSuccessFor(boxControl) {
@@ -62,4 +72,6 @@ function setSuccessFor(boxControl) {
     small.style.display = "none";
     const span = boxControl.parentElement.querySelector('#checkboxSpan');
     span.style.display = "block";
+    const crossboxSpan = boxControl.parentElement.querySelector('.crossboxSpan');
+    crossboxSpan.style.display = "none";
 }
