@@ -3,7 +3,7 @@
         {   
             "id": 1,
             "name": "video1",
-            "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+            "url": "videos/1.1.mp4",
             "category": "intro",
             "tone": "formeel"
         },
