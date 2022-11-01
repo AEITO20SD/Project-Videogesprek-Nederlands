@@ -10,98 +10,98 @@
         {
             "id": 2,
             "name": "video2",
-            "url": "",
+            "url": "videos/1.2.mp4",
             "category": "gespreksonderwerp",
             "tone": "formeel"            
         },
         {
             "id": 3,
             "name": "video3",
-            "url": "",
+            "url": "videos/1.3.mp4",
             "category": "kern",
             "tone": "formeel"
         },
         {
             "id": 4,
             "name": "video4",
-            "url": "",
+            "url": "videos/2.1.mp4",
             "category": "reactie",
             "tone": "formeel"
         },
         {
             "id": 5,
             "name": "video5",
-            "url": "",
+            "url": "videos/2.2.mp4",
             "category": "slot",
             "tone": "formeel"
         },
         {
             "id": 6,
             "name": "video6",
-            "url": "",
+            "url": "videos/2.3.mp4",
             "category": "intro",
             "tone": "informeel"
         },
         {
             "id": 7,
             "name": "video7",
-            "url": "",
+            "url": "videos/3.1.mp4",
             "category": "gespreksonderwerp",
             "tone": "informeel"
         },
         {
             "id": 8,
             "name": "video8",
-            "url": "",
+            "url": "videos/3.2.mp4",
             "category": "kern",
             "tone": "informeel"
         },
         {
             "id": 9,
             "name": "video9",
-            "url": "",
+            "url": "videos/3.3.mp4",
             "category": "reactie",
             "tone": "formeel"
         },
         {
             "id": 10,
             "name": "video10",
-            "url": "",
+            "url": "videos/4.1.mp4",
             "category": "slot",
             "tone": "informeel"
         },
         {
             "id": 11,
             "name": "video11",
-            "url": "",
+            "url": "videos/4.2.mp4",
             "category": "intro",
             "tone": "nonchalant"
         },
         {
             "id": 12,
             "name": "video12",
-            "url": "",
+            "url": "videos/4.3.mp4",
             "category": "gespreksonderwerp",
             "tone": "nonchalant"
         },
         {
             "id": 13,
             "name": "video13",
-            "url": "",
+            "url": "videos/5.1.mp4",
             "category": "kern",
             "tone": "nonchalant"
         },
         {
             "id": 14,
             "name": "video14",
-            "url": "",
+            "url": "videos/5.2.mp4",
             "category": "reactie",
             "tone": "nonchalant"
         },
         {
             "id": 15,
             "name": "video15",
-            "url": "",
+            "url": "videos/5.3.mp4",
             "category": "slot",
             "tone": "nonchalant"
         }
