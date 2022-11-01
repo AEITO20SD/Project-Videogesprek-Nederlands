@@ -9,17 +9,41 @@ function closeQuestion() {
 }
 
 function checkInput() {
-    var videos = document.querySelectorAll('.js-dropzone');
-    var success = true;
+    let videos = document.querySelectorAll('.js-dropzone');
+    let success = true;
 
-    for(var i = 0; i < videos.length; i++) {
-        var video = videos[i];
+    for(let i = 0; i < videos.length; i++) {
+        let video = videos[i];
+        let innerVideo = video.querySelector(".js-video");
 
-        setErrorFor(video);
-        if (video.childNodes.length > 0) {
-            setSuccessFor(video)
+        if(innerVideo) {
+            let videoId = video.querySelector(".js-video").dataset["videoId"];
+
+            if(assignment.correctAnswer[i] == videoId) {
+                //Video is correct
+                setSuccessFor(video);
+            }
+            else {
+                //Video is niet correct
+                setErrorFor(video);  
+                
+                success = false;
+            }
+        }
+        else {
+            //Video is niet geselecteerd
+            setErrorFor(video);
+
+            success = false;
         }
     }
+
+    // if(success) {
+    //     setTimeout(function() {
+    //         window.location.href = "?id=4";
+    //     }, 5000);
+    // }
+    
     return success;
 }
 
