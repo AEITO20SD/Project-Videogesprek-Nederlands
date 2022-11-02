@@ -22,8 +22,6 @@ function checkInput() {
     let dropzones = document.querySelectorAll('.js-dropzone');
     let success = true;
 
-    //check if all dropzones are filled with a video, if so, make modal visible
-
     for(let i = 0; i < dropzones.length; i++) {
         let video = dropzones[i];
         let innerVideo = video.querySelector(".js-video");
@@ -50,11 +48,22 @@ function checkInput() {
         }
     }
 
-    if(success) {
-        setTimeout(function() {
-            window.location.href = "?id=2";
-        }, 5000);
-    }
+    //kijk of alle dropzones gevuld zijn
+    dropzones.forEach((dropzone) => {
+        if (dropzone.childNodes.length == 0) {
+            allDropzonesFilled = false;
+        }
+        else{
+            allDropzonesFilled = true;
+        }
+    });
+
+
+    // if(success) {
+    //     setTimeout(function() {
+    //         window.location.href = "?id=2";
+    //     }, 5000);
+    // }
     
     closeCheckBox();
     return success;
