@@ -8,6 +8,16 @@ function closeQuestion() {
     e.style.display = "none";
 }
 
+function openCheckBox() {
+    var e = document.getElementById("openCheckBox");
+    e.style.display = "block";
+}
+
+function closeCheckBox() {
+    var e = document.getElementById("openCheckBox");
+    e.style.display = "none";
+}
+
 function checkInput() {
     let videosInDropzone = document.querySelectorAll('.js-dropzone');
     let success = true;
@@ -46,6 +56,7 @@ function checkInput() {
         }, 5000);
     }
     
+    closeCheckBox();
     return success;
 }
 

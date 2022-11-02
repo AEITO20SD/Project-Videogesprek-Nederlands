@@ -213,7 +213,7 @@ h2 {
     cursor: pointer;
 }
 
-.questionBox {
+.boxOverlay {
     background-color: rgba(0, 0, 0, 0.6);
     width: 100vw;
     height: 100vh;
@@ -223,7 +223,7 @@ h2 {
     display: none;
 }
 
-.questionBoxContent {
+.boxContent {
     background-color: #0055A3;
     color: white;
     border-radius: 5px;
@@ -234,6 +234,16 @@ h2 {
     padding: 25px 75px;
     position: relative;
     top: 20%;
+}
+
+#checkBoxContent {
+    padding: 20px;
+    width: 40%;
+    text-align: center; 
+}
+
+#button {
+    margin: 10px;
 }
 
 .questionButton {
@@ -290,7 +300,7 @@ h2 {
     margin: auto;
 }
 
-.checkButton {
+.button {
     position: relative;
     margin-top: -10px;
     color: white;
@@ -303,7 +313,7 @@ h2 {
     transition: 0.5s ease;
 }
 
-.checkButton:hover{
+.button:hover{
     background: #7AC142;
     transition: 0.5s ease;
 
