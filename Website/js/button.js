@@ -9,11 +9,13 @@ function closeQuestion() {
 }
 
 function checkInput() {
-    let videos = document.querySelectorAll('.js-dropzone');
+    let videosInDropzone = document.querySelectorAll('.js-dropzone');
     let success = true;
 
-    for(let i = 0; i < videos.length; i++) {
-        let video = videos[i];
+    //check if all dropzones are filled with a video, if so, make modal visible
+
+    for(let i = 0; i < videosInDropzone.length; i++) {
+        let video = videosInDropzone[i];
         let innerVideo = video.querySelector(".js-video");
 
         if(innerVideo) {
@@ -38,11 +40,11 @@ function checkInput() {
         }
     }
 
-    // if(success) {
-    //     setTimeout(function() {
-    //         window.location.href = "?id=4";
-    //     }, 5000);
-    // }
+    if(success) {
+        setTimeout(function() {
+            window.location.href = "?id=2";
+        }, 5000);
+    }
     
     return success;
 }
