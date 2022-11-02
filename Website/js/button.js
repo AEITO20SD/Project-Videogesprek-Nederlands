@@ -19,13 +19,13 @@ function closeCheckBox() {
 }
 
 function checkInput() {
-    let videosInDropzone = document.querySelectorAll('.js-dropzone');
+    let dropzones = document.querySelectorAll('.js-dropzone');
     let success = true;
 
     //check if all dropzones are filled with a video, if so, make modal visible
 
-    for(let i = 0; i < videosInDropzone.length; i++) {
-        let video = videosInDropzone[i];
+    for(let i = 0; i < dropzones.length; i++) {
+        let video = dropzones[i];
         let innerVideo = video.querySelector(".js-video");
 
         if(innerVideo) {
