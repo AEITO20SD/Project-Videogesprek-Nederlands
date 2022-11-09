@@ -37,6 +37,7 @@ function checkInput() {
         for(let i = 0; i < dropzones.length; i++) {
             let video = dropzones[i];
             let innerVideo = video.querySelector(".js-video");
+            innerVideo.setAttribute("draggable", false);
 
             if(innerVideo) {
                 let videoId = video.querySelector(".js-video").dataset["videoId"];
