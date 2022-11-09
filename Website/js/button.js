@@ -22,42 +22,46 @@ function checkInput() {
     let dropzones = document.querySelectorAll('.js-dropzone');
     let success = true;
 
-    for(let i = 0; i < dropzones.length; i++) {
-        let video = dropzones[i];
-        let innerVideo = video.querySelector(".js-video");
-
-        if(innerVideo) {
-            let videoId = video.querySelector(".js-video").dataset["videoId"];
-
-            if(assignment.correctAnswer[i] == videoId) {
-                //Video is correct
-                setSuccessFor(video);
-            }
-            else {
-                //Video is niet correct
-                setWrongFor(video);  
-                
-                success = false;
-            }
-        }
-        else {
-            //Video is niet geselecteerd
-            setErrorFor(video);
-
-            success = false;
-        }
-    }
-
     //kijk of alle dropzones gevuld zijn
     dropzones.forEach((dropzone) => {
         if (dropzone.childNodes.length == 0) {
             allDropzonesFilled = false;
+
+            for(let i = 0; i < dropzones.length; i++){
+                let dropzone = dropzones[i];
+                
+                setErrorFor(dropzone);
+                if(dropzone.childNodes.length == 1){
+                    setNeutralFor(dropzone);
+                }
+            }
         }
-        else{
+        else {
             allDropzonesFilled = true;
         }
     });
 
+    if (allDropzonesFilled == true) {
+        for(let i = 0; i < dropzones.length; i++) {
+            let video = dropzones[i];
+            let innerVideo = video.querySelector(".js-video");
+
+            if(innerVideo) {
+                let videoId = video.querySelector(".js-video").dataset["videoId"];
+
+                if(assignment.correctAnswer[i] == videoId) {
+                    //Video is correct
+                    setSuccessFor(video);
+                }
+                else {
+                    //Video is niet correct
+                    setWrongFor(video);  
+                    
+                    success = false;
+                }
+            }
+        }
+    }
 
     // if(success) {
     //     setTimeout(function() {
@@ -78,6 +82,11 @@ function setErrorFor(boxControl) {
     span.style.display = "none";
     const crossboxSpan = boxControl.parentElement.querySelector('.crossboxSpan');
     crossboxSpan.style.display = "none";
+}
+
+function setNeutralFor(boxControl) {
+    const small = boxControl.parentElement.querySelector('small');
+    small.style.display = "none";
 }
 
 function setWrongFor(boxControl) {
