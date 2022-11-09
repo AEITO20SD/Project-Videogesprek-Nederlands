@@ -21,27 +21,19 @@ function closeCheckBox() {
 function checkInput() {
     let dropzones = document.querySelectorAll('.js-dropzone');
     let success = true;
+    let score = 0;
 
-    //kijk of alle dropzones gevuld zijn
-    dropzones.forEach((dropzone) => {
-        if (dropzone.childNodes.length == 0) {
-            allDropzonesFilled = false;
+    for(let i = 0; i < dropzones.length; i++){
+        let dropzone = dropzones[i];
 
-            for(let i = 0; i < dropzones.length; i++){
-                let dropzone = dropzones[i];
-                
-                setErrorFor(dropzone);
-                if(dropzone.childNodes.length == 1){
-                    setNeutralFor(dropzone);
-                }
-            }
+        setErrorFor(dropzone);
+        if(dropzone.childNodes.length == 1){
+            setNeutralFor(dropzone);
+            score++;
         }
-        else {
-            allDropzonesFilled = true;
-        }
-    });
+    }
 
-    if (allDropzonesFilled == true) {
+    if (score == 5) {
         for(let i = 0; i < dropzones.length; i++) {
             let video = dropzones[i];
             let innerVideo = video.querySelector(".js-video");
