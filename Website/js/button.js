@@ -88,6 +88,8 @@ function setWrongFor(boxControl) {
     small.style.display = "none";
     const span = boxControl.parentElement.querySelector('.crossboxSpan');
     span.style.display = "block";
+    const cross = boxControl.parentElement.querySelector('.remove');
+    cross.style.display = "none";
 }
 
 function setSuccessFor(boxControl) {
@@ -98,4 +100,6 @@ function setSuccessFor(boxControl) {
     span.style.display = "block";
     const crossboxSpan = boxControl.parentElement.querySelector('.crossboxSpan');
     crossboxSpan.style.display = "none";
+    const cross = boxControl.parentElement.querySelector('.remove');
+    cross.style.display = "none";
 }
