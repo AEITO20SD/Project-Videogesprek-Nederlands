@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     return;
   }
 
-  console.log(assignment);
+  // console.log(assignment);
 
   const mediaLibraryRequest = await fetch("./data/videos.JSON");
   const mediaLibraryJson = await mediaLibraryRequest.json();
@@ -86,7 +86,7 @@ function shuffle(sourceArray) {
 }
 
 function openVideo() {
-  console.log("open " + videoCodeBlock);
+  // console.log("open " + videoCodeBlock);
 }
 
 function closeVideo() {
