@@ -47,12 +47,12 @@ function placeVideos(videos) {
       
     videoBlock.querySelector(".js-video").dataset["videoId"] = currentVideo.id;
     videoBlock.querySelector(".js-video-source").src = currentVideo.url;
-    videoBlock.querySelector(".js-title").innerHTML = `Videos
-    ${currentVideo.id}
-    ${currentVideo.name}
-    ${currentVideo.url}
-    ${currentVideo.category}
-    ${currentVideo.tone}`;
+    // videoBlock.querySelector(".js-title").innerHTML = `Videos
+    // ${currentVideo.id}
+    // ${currentVideo.name}
+    // ${currentVideo.url}
+    // ${currentVideo.category}
+    // ${currentVideo.tone}`;
 
     // vul de rij met videos todat er 5 in staan, maakt daarna een nieuwe rij aan
     if (i % 5 === 0) {
