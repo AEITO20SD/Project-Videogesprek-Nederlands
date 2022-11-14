@@ -21,11 +21,11 @@ html, body {
     margin: auto;
     height: 235px;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+    background-repeat: no-repeat; 
+    background-size: 150px, 150px; 
+    background-position-x: 27px; 
+    background-position-y: 75px;
 }
-
-#videoContainer {
-}
-
 
 .title {
     width: 100vw;
