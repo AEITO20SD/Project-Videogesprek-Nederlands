@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Project NL - Communicatievideo</title>
+    <meta charset="UTF-8" />
+    <meta
+      name="author"
+      content="Beau de Wit, Lucas Loontjens, Justin Alink & Bowie Jorissen"
+    />
+    <meta
+      name="description"
+      content="Project NL - Communicatievideo || Op deze website kan je video's achter elkaar plaatsen om een kloppend filmpje te maken."
+    />
+    <link rel="stylesheet" href="css/styles.css"/>
+    <script src="js/script.js"></script>
+    <script src="js/DragDrop.js"></script>
+    <script src="js/button.js"></script>
+    <script src="js/getVideos.js"></script>
+
+    <template id="video-block">
+      <div class="col">
+      <div class="video js-video drag-drop" onclick="openVideo()">
+        <video controls controlsList="nodownload">
+          <source type="video/mp4" class="js-video-source" />
+        </video>
+        <!-- <span class="js-title">[TITLE]</span> -->
+        <span class="remove js-remove">
+          <svg class="delete"
+                xmlns="http://www.w3.org/2000/svg"
+                width="25"
+                height="25"
+                viewBox="0 0 34.56 34.56"
+          ><path
+                    id="Icon_map-circle"
+                    data-name="Icon map-circle"
+                    d="M35.28,18A17.28,17.28,0,1,1,18,.72,17.28,17.28,0,0,1,35.28,18Z"
+                    transform="translate(-0.72 -0.72)"
+            /><svg
+                class="delete-cross"
+                xmlns="http://www.w3.org/2000/svg"
+                width="25"
+                height="25"
+                viewBox="0 0 48 48"
+        ><path
+                    id="Icon_metro-cross"
+                    data-name="Icon metro-cross"
+                    d="M33.138,26.711h0l-9.358-9.358,9.358-9.358h0a.966.966,0,0,0,0-1.363L28.717,2.21a.967.967,0,0,0-1.363,0h0L18,11.568,8.637,2.21h0a.966.966,0,0,0-1.363,0L2.852,6.631a.966.966,0,0,0,0,1.363h0l9.358,9.358L2.852,26.711h0a.966.966,0,0,0,0,1.363l4.421,4.421a.966.966,0,0,0,1.363,0h0L18,23.136l9.358,9.358h0a.966.966,0,0,0,1.363,0l4.421-4.421a.966.966,0,0,0,0-1.363Z"
+                    transform="translate(15 15)"
+                    fill="#fff"
+            />
+          </svg>
+          </svg>
+        </span>
+      </div>
+      </div>
+    </template>
+
+  </head>
+  <body>
+    <main>
+      <div id="tijdlijnContainer" style="background-image: url('logo/logo.jpeg');">
+        <div class="title">
+          <h1 id="textContainer">Tijdlijn</h1>
+          <div class="spaceRow"><button class="button" onclick="openCheckBox()">Check</button></div>
+        </div>
+
+        <button class="questionButton" onclick="openQuestion()">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            viewBox="0 0 40 40"
+          >
+            <path
+              id="Icon_awesome-question-circle"
+              data-name="Icon awesome-question-circle"
+              d="M40.563,20.563a20,20,0,1,1-20-20A20,20,0,0,1,40.563,20.563ZM21.1,7.175a10.446,10.446,0,0,0-9.4,5.142.969.969,0,0,0,.219,1.311l2.8,2.122a.967.967,0,0,0,1.344-.171c1.441-1.827,2.428-2.887,4.621-2.887,1.648,0,3.685,1.06,3.685,2.658,0,1.208-1,1.828-2.624,2.74-1.9,1.063-4.407,2.387-4.407,5.7v.323a.968.968,0,0,0,.968.968h4.516a.968.968,0,0,0,.968-.968V24c0-2.3,6.709-2.391,6.709-8.6C30.5,10.724,25.645,7.175,21.1,7.175Zm-.537,20a3.71,3.71,0,1,0,3.71,3.71A3.714,3.714,0,0,0,20.563,27.175Z"
+              transform="translate(-0.563 -0.563)"
+              fill="#fff"
+            />
+          </svg>
+        </button>
+
+        <div class="row dropzones js-dropzones">
+          <div class="col">
+            <div class="dropzone js-dropzone"></div>
+            <h2>Introductie</h2>
+            <small hidden>Je moet een video selecteren.</small>
+            <span id="checkboxSpan"><div class="wrapper"><svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark_circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark_check" fill="none" d="M14 32a16.2 16.2 90 0012 6 16.2 16.2 90 0012-6M21 20V17h-1V20M32 20V20 17h-1V18 20" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/></svg></div></span>
+            <span class="crossboxSpan"><div class="wrapper"><svg class="crossmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="crossmark_circle" cx="26" cy="26" r="25" fill="none"/><path class="crossmark_check" fill="none" d="M38 38a16.2 16.2 0 00-12-6 16.2 16.2 0 00-12 6M21 20V18h-1V20M32 20V20 18h-1V18 20" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/></svg></div></span>
+          </div>
+          <div class="col">
+            <div class="dropzone js-dropzone"></div>
+            <h2>Gespreksonderwerp</h2>
+            <small hidden>Je moet een video selecteren.</small>
+            <span id="checkboxSpan"><div class="wrapper"><svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark_circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark_check" fill="none" d="M14 32a16.2 16.2 90 0012 6 16.2 16.2 90 0012-6M21 20V17h-1V20M32 20V20 17h-1V18 20" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/></svg></div></span>
+            <span class="crossboxSpan"><div class="wrapper"><svg class="crossmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="crossmark_circle" cx="26" cy="26" r="25" fill="none"/><path class="crossmark_check" fill="none" d="M38 38a16.2 16.2 0 00-12-6 16.2 16.2 0 00-12 6M21 20V18h-1V20M32 20V20 18h-1V18 20" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/></svg></div></span>
+          </div>
+          <div class="col">
+            <div class="dropzone js-dropzone"></div>
+            <h2>Kern</h2>
+            <small hidden>Je moet een video selecteren.</small>
+            <span id="checkboxSpan"><div class="wrapper"><svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark_circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark_check" fill="none" d="M14 32a16.2 16.2 90 0012 6 16.2 16.2 90 0012-6M21 20V17h-1V20M32 20V20 17h-1V18 20" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/></svg></div></span>
+            <span class="crossboxSpan"><div class="wrapper"><svg class="crossmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="crossmark_circle" cx="26" cy="26" r="25" fill="none"/><path class="crossmark_check" fill="none" d="M38 38a16.2 16.2 0 00-12-6 16.2 16.2 0 00-12 6M21 20V18h-1V20M32 20V20 18h-1V18 20" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/></svg></div></span>
+          </div>
+          <div class="col">
+            <div class="dropzone js-dropzone"></div>
+            <h2>Reactie</h2>
+            <small hidden>Je moet een video selecteren.</small>
+            <span id="checkboxSpan"><div class="wrapper"><svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark_circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark_check" fill="none" d="M14 32a16.2 16.2 90 0012 6 16.2 16.2 90 0012-6M21 20V17h-1V20M32 20V20 17h-1V18 20" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/></svg></div></span>
+            <span class="crossboxSpan"><div class="wrapper"><svg class="crossmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="crossmark_circle" cx="26" cy="26" r="25" fill="none"/><path class="crossmark_check" fill="none" d="M38 38a16.2 16.2 0 00-12-6 16.2 16.2 0 00-12 6M21 20V18h-1V20M32 20V20 18h-1V18 20" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/></svg></div></span>
+          </div>
+          <div class="col">
+            <div class="dropzone js-dropzone"></div>
+            <h2>Slot</h2>
+            <small hidden>Je moet een video selecteren.</small>
+            <span id="checkboxSpan"><div class="wrapper"><svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark_circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark_check" fill="none" d="M14 32a16.2 16.2 90 0012 6 16.2 16.2 90 0012-6M21 20V17h-1V20M32 20V20 17h-1V18 20" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/></svg></div></span>
+            <span class="crossboxSpan"><div class="wrapper"><svg class="crossmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="crossmark_circle" cx="26" cy="26" r="25" fill="none"/><path class="crossmark_check" fill="none" d="M38 38a16.2 16.2 0 00-12-6 16.2 16.2 0 00-12 6M21 20V18h-1V20M32 20V20 18h-1V18 20" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/></svg></div></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="videoContainer">
+        <div class="col-videos">
+          <div class="title">
+            <h1 id="textContainerSecondairy">Video's</h1>
+          </div>
+        </div>
+        <div class="js-videos">
+
+        </div>
+      <div class="boxOverlay" id="questionBox">
+        <div class="boxContent">
+
+          <h4>Uitleg opdracht</h4><button class="closeButton" onclick="closeQuestion()"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 40 40">
+          <path id="Icon_awesome-arrow-circle-right" data-name="Icon awesome-arrow-circle-right" d="M18,.563A17.438,17.438,0,1,1,.563,18,17.434,17.434,0,0,1,18,.563Zm-2.032,10.1,5.309,5.091H8.438A1.683,1.683,0,0,0,6.75,17.438v1.125A1.683,1.683,0,0,0,8.438,20.25H21.277l-5.309,5.091a1.689,1.689,0,0,0-.028,2.412l.773.766a1.681,1.681,0,0,0,2.384,0l9.33-9.323a1.681,1.681,0,0,0,0-2.384L19.1,7.474a1.681,1.681,0,0,0-2.384,0l-.773.766a1.7,1.7,0,0,0,.028,2.419Z" transform="translate(-0.563 -0.563)" fill="#fff"/>
+        </svg>
+        </button>
+          <br>
+          <h5 style="font-size: 14px">Er zijn vele manieren voor het voeren van een goed zakelijk gesprek.
+            In deze opdracht bekijk je een ontslaggesprek. Kies 5 fragmenten uit 
+            het lichtgekleurde gedeelte van de pagina en sleep ze naar het donkerder 
+            gekleurde gedeelte aan de bovenkant van de pagina. Zet de fragmenten in de 
+            volgorde waarvan jij denkt dat ze achter elkaar een goed zakelijk gesprek vormen. 
+            Let op: er blijven dus fragmenten over.</h5>
+            <br>
+          <h5 style="font-size: 14px">Heb je 5 fragmenten in de juiste volgorde geselecteerd?
+            Kijk dan met de 'check'-knop rechtsboven op de pagina hoeveel 
+            elementen je op de juiste plek hebt neergezet.</h5>
+        </div>
+      </div>
+        <div class="videoBox">
+          <div class="videoBoxContent">
+            <button class="closeButton" onclick="closeVideo()"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 40 40">
+              <path id="Icon_awesome-arrow-circle-right" data-name="Icon awesome-arrow-circle-right" d="M18,.563A17.438,17.438,0,1,1,.563,18,17.434,17.434,0,0,1,18,.563Zm-2.032,10.1,5.309,5.091H8.438A1.683,1.683,0,0,0,6.75,17.438v1.125A1.683,1.683,0,0,0,8.438,20.25H21.277l-5.309,5.091a1.689,1.689,0,0,0-.028,2.412l.773.766a1.681,1.681,0,0,0,2.384,0l9.33-9.323a1.681,1.681,0,0,0,0-2.384L19.1,7.474a1.681,1.681,0,0,0-2.384,0l-.773.766a1.7,1.7,0,0,0,.028,2.419Z" transform="translate(-0.563 -0.563)" fill="#fff"/>
+            </svg>
+              <video></video>
+          </div>
+        </div>
+      </div>
+
+      <div class="boxOverlay" id="openCheckBox">
+        <div class="boxContent" id="checkBoxContent">
+
+          <p>Weet je zeker dat je deze vijf antwoorden wilt nakijken?</p>
+
+          <button class="button" id="button" onclick="checkInput()">Ja</button>
+          <button class="button" id="button" onclick="closeCheckBox()">Terug</button>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
