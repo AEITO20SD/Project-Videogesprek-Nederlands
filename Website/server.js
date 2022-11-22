@@ -19,5 +19,10 @@ app.get('/opdracht', function(req, res) {
 //get css
 app.use(express.static(__dirname + '/'));
 
+//setup post
+app.post("/", function(req, res) {
+  res.send("nodejs - " + req.body);
+});
+
 app.listen(8080);
 console.log('Server is listening on port 8080');

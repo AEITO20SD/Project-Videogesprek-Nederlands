@@ -18,6 +18,74 @@ function closeCheckBox() {
     e.style.display = "none";
 }
 
+function checkInput2(){
+    let dropzones = document.querySelectorAll('.js-dropzone');
+    let score = 0;
+    let answers = [];
+
+    //check if every dropzone is filled
+    for(let i = 0; i < dropzones.length; i++){
+        if(dropzones[i].childNodes.length == 1){
+            score++
+        }else{
+
+        }
+    }
+
+    //if every dropzone is filled
+    if(score == dropzones.length){
+        for(let i = 0; i < dropzones.length; i++) {
+            //set draggable to false
+            dropzones[i].querySelector(".js-video").setAttribute("draggable", false);
+            //get video id
+            let videoId = dropzones[i].querySelector(".js-video").dataset["videoId"];
+            //add video id to array
+            answers[i] = videoId;
+        }
+        console.log(answers);
+    }else{
+
+    }
+}
+
+function checkanswers() {
+
+    // Create and Send the request
+    var fetch_status;
+    fetch('/', {
+        method: "POST",
+        // Set the headers
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        // Set the post data
+        body: JSON.stringify({
+            name : "Jon Doe",
+            username : "jon-doe",
+            email : 'jon-doe@unknown.com'
+        })
+    })
+    .then(function (response) {
+        // Save the response status in a variable to use later.
+        fetch_status = response.status;
+        // Handle success
+        // eg. Convert the response to JSON and return
+        return response.json();
+    }) 
+    .then(function (json) {
+        // Check if the response were success
+        if (fetch_status == 201) {
+            // Use the converted JSON
+            console.log(json);
+        }
+    })
+    .catch(function (error){
+        // Catch errors
+        console.log(error);
+    }); 
+}
+
 function checkInput() {
     let dropzones = document.querySelectorAll('.js-dropzone');
     let success = true;
@@ -33,7 +101,7 @@ function checkInput() {
         }
     }
 
-    if (score == 5) {
+    if (score == dropzones.length) {
         for(let i = 0; i < dropzones.length; i++) {
             let video = dropzones[i];
             let innerVideo = video.querySelector(".js-video");
