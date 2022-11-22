@@ -1,5 +1,6 @@
-var express = require('express');
+const express = require("express");
 var app = express();
+const bodyParser = require("body-parser")
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -19,9 +20,13 @@ app.get('/opdracht', function(req, res) {
 //get css
 app.use(express.static(__dirname + '/'));
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 //setup post
 app.post("/", function(req, res) {
-  res.send("nodejs - " + req.body);
+  console.log(req.body.answers);
+  res.send(req.body);
 });
 
 app.listen(8080);

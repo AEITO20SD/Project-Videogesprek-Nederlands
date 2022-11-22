@@ -43,12 +43,14 @@ function checkInput2(){
             answers[i] = videoId;
         }
         console.log(answers);
+        checkanswers(answers);
     }else{
 
     }
 }
 
-function checkanswers() {
+function checkanswers(userinput) {
+    console.log("checkanswers function fired");
 
     // Create and Send the request
     var fetch_status;
@@ -61,9 +63,7 @@ function checkanswers() {
         },
         // Set the post data
         body: JSON.stringify({
-            name : "Jon Doe",
-            username : "jon-doe",
-            email : 'jon-doe@unknown.com'
+            answers : userinput
         })
     })
     .then(function (response) {
@@ -71,11 +71,14 @@ function checkanswers() {
         fetch_status = response.status;
         // Handle success
         // eg. Convert the response to JSON and return
+        console.log(response);
+        console.log(fetch_status);
         return response.json();
+
     }) 
     .then(function (json) {
         // Check if the response were success
-        if (fetch_status == 201) {
+        if (fetch_status == 200) {
             // Use the converted JSON
             console.log(json);
         }
