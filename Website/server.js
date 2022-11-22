@@ -11,10 +11,13 @@ app.get('/', function(req, res) {
   res.render('pages/index');
 });
 
-// about page
-app.get('/about', function(req, res) {
-  res.render('pages/about');
+// opdracht page
+app.get('/opdracht', function(req, res) {
+  res.render('pages/opdracht');
 });
+
+//get css
+app.use(express.static(__dirname + '/'));
 
 app.listen(8080);
 console.log('Server is listening on port 8080');
