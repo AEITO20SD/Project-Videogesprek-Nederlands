@@ -29,6 +29,12 @@ text-align: center;
     display: block;
 }
 
+.wrap-input{
+    width: 100%;
+    position: relative;
+    margin-bottom: 20px;
+}
+
 .roomcode-input{
     font-size: 16px;
     color: #43383e;
@@ -42,26 +48,40 @@ text-align: center;
     padding: 0 35px 0 35px;
 }
 
-.roomcode-button{
+.roomcode-form-btn{
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0 20px;
     min-width: 160px;
     height: 62px;
-    background-color: transparent;
+    background-color: #F6D11C;
     border-radius: 31px;
-    font-size: 16px;
-    color: #fff;
+    font-size: 18px;
+    color: black;
     line-height: 1.2;
     text-transform: uppercase;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
     transition: all 0.4s;
     position: relative;
     z-index: 1;
 }
 
+.roomcode-form-btn:hover{
+    background-color: #7AC142;
+}
+
+.container-roomcode-form-btn{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
 button{
     outline: none !important;
     border: none;
-    background: transparent;
 }
