@@ -25,9 +25,21 @@ app.use(bodyParser.json());
 
 //setup post
 app.post("/", function(req, res) {
-  console.log(req.body.answers);
-  res.send(req.body);
+  var userinput = req.body.answers;
+  var answers = ['1', '4', '14', '10', '3'];
+  var response = [];
+
+  for(let i = 0; i < userinput.length; i++) {
+    if(userinput[i] == answers[i]){
+      response[i] = true;
+    }else{
+      response[i] = false;
+    }
+  }
+  res.send(response);
 });
+
+
 
 app.listen(8080);
 console.log('Server is listening on port 8080');

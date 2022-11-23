@@ -18,7 +18,7 @@ function closeCheckBox() {
     e.style.display = "none";
 }
 
-function checkInput2(){
+function checkInput(){
     let dropzones = document.querySelectorAll('.js-dropzone');
     let score = 0;
     let answers = [];
@@ -43,13 +43,14 @@ function checkInput2(){
             answers[i] = videoId;
         }
         console.log(answers);
-        checkanswers(answers);
+        checkanswers(answers, dropzones);
+        closeCheckBox();
     }else{
 
     }
 }
 
-function checkanswers(userinput) {
+function checkanswers(userinput, dropzones) {
     console.log("checkanswers function fired");
 
     // Create and Send the request
@@ -57,84 +58,34 @@ function checkanswers(userinput) {
     fetch('/', {
         method: "POST",
         // Set the headers
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
+        headers: {'Accept': 'application/json','Content-Type': 'application/json' },
         // Set the post data
-        body: JSON.stringify({
-            answers : userinput
-        })
+        body: JSON.stringify({answers : userinput})
     })
     .then(function (response) {
         // Save the response status in a variable to use later.
         fetch_status = response.status;
-        // Handle success
         // eg. Convert the response to JSON and return
-        console.log(response);
-        console.log(fetch_status);
         return response.json();
-
     }) 
     .then(function (json) {
         // Check if the response were success
         if (fetch_status == 200) {
             // Use the converted JSON
             console.log(json);
-        }
-    })
-    .catch(function (error){
-        // Catch errors
-        console.log(error);
-    }); 
-}
-
-function checkInput() {
-    let dropzones = document.querySelectorAll('.js-dropzone');
-    let success = true;
-    let score = 0;
-
-    for(let i = 0; i < dropzones.length; i++){
-        let dropzone = dropzones[i];
-
-        setErrorFor(dropzone);
-        if(dropzone.childNodes.length == 1){
-            setNeutralFor(dropzone);
-            score++;
-        }
-    }
-
-    if (score == dropzones.length) {
-        for(let i = 0; i < dropzones.length; i++) {
-            let video = dropzones[i];
-            let innerVideo = video.querySelector(".js-video");
-            innerVideo.setAttribute("draggable", false);
-
-            if(innerVideo) {
-                let videoId = video.querySelector(".js-video").dataset["videoId"];
-
-                if(assignment.correctAnswer[i] == videoId) {
-                    //Video is correct
-                    setSuccessFor(video);
-                }
-                else {
-                    //Video is niet correct
-                    setWrongFor(video);  
-                    
-                    success = false;
+            //set succes or wrongs for response
+            for(let i = 0; i < json.length; i++){
+                if(json[i]){
+                    setSuccessFor(dropzones[i]);
+                }else{
+                    setWrongFor(dropzones[i]);
                 }
             }
         }
-    }
-
-    // if(success) {
-    //     setTimeout(function() {
-    //         window.location.href = "?id=2";
-    //     }, 5000);
-    // }
-    
-    closeCheckBox();
-    return success;
+    })
+    .catch(function (error){
+        console.log(error);
+    }); 
 }
 
 function setErrorFor(boxControl) {
