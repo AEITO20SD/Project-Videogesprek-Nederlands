@@ -1,15 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="author" content="Beau de Wit, Lucas Loontjens, Justin Alink, Bowie Jorissen, Wim de bult & Stef van diepen" />
-    <meta name="description" content="Project NL - Communicatievideo || Op deze website kan je video's achter elkaar plaatsen om een kloppend filmpje te maken." />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css"/>
-    <link rel="stylesheet" href="css/login-style.css"/>
-    <title>Document</title>
-</head>
+    <head>
+        <%- include('../components/head'); %>
+    </head>
 <body>
 
     <%- include('../components/header'); %>
@@ -19,8 +12,14 @@
             <div class="wrap-login">
                 <form class="login-form">
                     <span> <h3>Vul een roomcode in</h3> </span>
-                    <input class="roomcode-input" type="text" name="roomcode" placeholder="Roomcode">
-                    <button class="roomcode-button" type="submit">Ga naar de room</button>
+                    <div class="wrap-input">
+                        <input class="roomcode-input" type="text" name="roomcode" placeholder="Roomcode">
+                    </div>
+                    <div class="container-roomcode-form-btn">
+                        <button class="roomcode-form-btn">
+                            Ga naar de opdracht
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
