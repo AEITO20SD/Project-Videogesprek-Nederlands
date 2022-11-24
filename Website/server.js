@@ -30,6 +30,11 @@ app.get('/opdracht', function(req, res) {
   res.render('pages/opdracht');
 });
 
+// dashboard page
+app.get('/dashboard', function(req, res) {
+  res.render('pages/dashboard');
+});
+
 //get css
 app.use(express.static(__dirname + '/'));
 
