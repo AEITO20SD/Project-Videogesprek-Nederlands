@@ -104,13 +104,6 @@ INSERT INTO `videos` (`id`, `name`, `url`, `category`, `tone`) VALUES
 --
 
 --
--- Indexen voor tabel `assignments`
---
-ALTER TABLE `assignments`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_docent` (`docent_id`);
-
---
 -- Indexen voor tabel `docenten`
 --
 ALTER TABLE `docenten`
