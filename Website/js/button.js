@@ -50,7 +50,7 @@ function checkInput(){
     }
 }
 
-function checkanswers(userinput, dropzones) {
+async function checkanswers(userinput, dropzones) {
     console.log("checkanswers function fired");
 
     // Create and Send the request
@@ -87,6 +87,7 @@ function checkanswers(userinput, dropzones) {
         console.log(error);
     }); 
 }
+
 
 function setErrorFor(boxControl) {
     boxControl.style.borderColor = "#ff2d4a";

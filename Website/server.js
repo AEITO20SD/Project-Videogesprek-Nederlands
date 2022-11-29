@@ -30,7 +30,7 @@ app.get('/opdracht', function(req, res) {
   res.render('pages/opdracht');
 });
 
-// dashboard page
+// daschboard page
 app.get('/dashboard', function(req, res) {
   res.render('pages/dashboard');
 });
@@ -62,6 +62,21 @@ app.post("/", function(req, res) {
       }
     }
     res.send(response);
+  });
+});
+
+//get assignment
+app.post("/getAssignmentData",function(req, res) {
+  var assignmentId = req.body.assignmentId;
+
+  con.query("SELECT possibleAnswers FROM assignments WHERE id = " + assignmentId, function (err, result, fields) {
+    if (err) throw err;
+    console.log(result[0].possibleAnswers);
+    console.log(assignmentId);
+
+    possibleAnswers = JSON.parse(result[0].possibleAnswers);
+    
+    res.send(possibleAnswers);
   });
 });
 
