@@ -2,6 +2,8 @@
 <html lang="en">
     <head>
         <%- include('../components/head'); %>
+        <script> 
+        </script>
     </head>
 <body>
 
@@ -10,8 +12,28 @@
 
 <div class="dashboard-container">
 
-    <button> Opdracht Aanmaken</button>
-    <button> Opdracht Vrijgeven</button>
+    <div class="dashboard-listing">
+        <div class="dashboard-listing-left">
+            <span class="dashboard-listing-title"> Opdracht Aanmaken</span>
+        </div>
+        <div class="dashboard-listing-right">
+            <button class="dashboard-button"> <embed src="icons/edit.svg"> </button>
+            <button class="dashboard-button"> <embed src="icons/trash.svg"> </button>
+            <input type="checkbox" class="dashboard-button dashboard-checkbox"></input>
+        </div>
+    </div>
+
+    <div class="dashboard-listing">
+        <div class="dashboard-listing-left">
+            <span class="dashboard-listing-title"> Opdracht Vrijgeven</span>
+        </div>
+        <div class="dashboard-listing-right">
+            <button class="dashboard-button"> <embed src="icons/edit.svg"> </button>
+            <button class="dashboard-button"> <embed src="icons/trash.svg"> </button>
+            <input type="checkbox" class="dashboard-button dashboard-checkbox"></input>
+        </div>
+    </div>
+
     
 </div> 
 
