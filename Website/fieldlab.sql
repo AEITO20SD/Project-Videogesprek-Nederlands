@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 28 nov 2022 om 11:16
+-- Gegenereerd op: 29 nov 2022 om 09:26
 -- Serverversie: 10.4.21-MariaDB
 -- PHP-versie: 7.4.29
 
@@ -102,6 +102,13 @@ INSERT INTO `videos` (`id`, `name`, `url`, `category`, `tone`) VALUES
 --
 -- Indexen voor geëxporteerde tabellen
 --
+
+--
+-- Indexen voor tabel `assignments`
+--
+ALTER TABLE `assignments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_docent` (`docent_id`);
 
 --
 -- Indexen voor tabel `docenten`
