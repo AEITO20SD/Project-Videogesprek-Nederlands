@@ -1,7 +1,51 @@
-
+<script>
+    function openForm() {
+      document.getElementById("popupForm").style.display = "block";
+    }
+    function loginMicrosoft(){
+        location.href="/auth/microsoft";
+        
+    }
+    function closeForm() {
+      document.getElementById("popupForm").style.display = "none";
+    }
+  </script>
 
 <header>
+    <!-- oude button voor nu -->
     <nav class="navbar">
-        <button class="login-btn">Login</button>
+        <button class="login-btn openButton" onclick="openForm()">Login</button>
     </nav>
+
+
+<div class="loginPopup">
+  <div class="formPopup" id="popupForm">
+    <form action="/action_page.php" class="formContainer">
+
+      <!-- input velden voor eenvoudige login -->
+      <div class="basis-inlog">
+      <h2>Gebruiker</h2>
+      <input></input>
+      <h2>Wachwoord</h2>
+      <input></input>
+      </div>
+
+      <!-- microsoft login button -->
+      <button type="button" class="btn admin-login" onclick="loginMicrosoft()">Login</button>
+      <!-- close button -->
+      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+
+    </form> 
+  </div>
+</div>
+
+<script>
+  function openForm() {
+    document.getElementById("popupForm").style.display = "block";
+  }
+  function closeForm() {
+    document.getElementById("popupForm").style.display = "none";
+  }
+</script>
 </header>
+
