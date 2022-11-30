@@ -133,14 +133,20 @@ app.get('/opdracht', function(req, res) {
 });
 
 // daschboard page
-app.get('/dashboard', function(req, res) {
-  connectionPool.query('SELECT name FROM assignments', function(err, result){
+app.get('/dashboard', async function(req, res) {
+  await connectionPool.query('SELECT name FROM assignments', function(err, result){
     // ...
     var data = JSON.stringify(result);
     console.log({items: data});
     res.render('pages/dashboard', {items: data});
 });
 
+});
+
+app.get('/create-room', function(req, res){
+  var code = Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
+  console.log(code);
+  res.send('pages/dashboard-room', {room: code});
 });
 
 //get css
