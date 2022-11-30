@@ -204,6 +204,32 @@ app.post("/getAssignmentData",function(req, res) {
 //   res.redirect('/dashboard');
 // });
 
+async function asyncQuery(query, values) {
+  return new Promise(function(resolve, reject) {
+      connectionPool.getConnection(function (error, connection) {
+          if (error) {
+              reject(error);
+  
+              return;
+          }
+  
+          connection.query({
+              sql: query,
+              values: values
+          }, function (error, results) {
+              if (error) {
+                  reject(error);
+              }
+              else {
+                  resolve(results);
+              }
+  
+              connection.release();
+          });
+      });
+  });
+}
+
 
 
 app.listen(8080);
