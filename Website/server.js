@@ -123,7 +123,9 @@ app.set('view engine', 'ejs');
 // }
 
 // index page
-app.get('/', function(req, res) {
+
+
+app.get('/',function(req,res){
   res.render('pages/index');
 });
 
@@ -236,7 +238,31 @@ async function asyncQuery(query, values) {
   });
 }
 
-
+app.get('/:roomcode',async function(req, res) {
+  if(req.params.roomcode.length >= 0){
+    try{
+      const data = await asyncQuery('SELECT * FROM room WHERE token = ?', req.params.roomcode);
+      if (data.length === 0){
+        res.status(404).json({
+          error: true,
+          message: "Roomcode niet gevonden!"
+        });
+      }else{
+        res.render('pages/opdracht', data);
+        // res.status(200).json(data);
+        
+      }
+    }
+    catch(e){
+      res.status(400).json({
+        error: true,
+        message: e
+      })
+    }
+  }else{
+    res.render('pages/index');
+  }
+});
 
 app.listen(8080);
 console.log('Server is listening on port 8080');

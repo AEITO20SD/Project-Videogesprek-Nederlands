@@ -4,7 +4,7 @@
         "port": 3306,
         "user": "root",
         "password": "",
-        "name": "fieldlab",
+        "name": "samenspraakDB",
 
         "timeout": 30000
     }
