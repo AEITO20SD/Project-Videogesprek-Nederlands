@@ -1,0 +1,70 @@
+/* styling Dashboard pagina */ 
+
+.dashboard-container {
+    border: red 1px;
+    height: 100%;
+    width: 90%;
+    margin: 2.5% 5% 5% 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.dashboard-listing{
+    display:flex;   
+    flex-direction: row;
+    margin-bottom: 2%;
+    width: 100%;
+    background-color: white;
+    justify-content: space-between;
+    border-radius: 10px;
+    min-height: 40px;
+    padding: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.16);
+}
+.dashboard-listing-left{
+    margin-top:auto;
+    margin-bottom: auto;
+}
+.dashboard-listing-right{
+    display: flex;
+    margin-right: 1%;
+    justify-content: space-between;
+    width: 10%;
+    margin-top: auto;
+    margin-bottom:auto;
+    
+}
+.dashboard-listing-title{
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 2%;
+    padding-right: 80%;
+    overflow: hidden;
+    text-overflow: clip;
+    white-space: nowrap;
+    font-weight: bold;
+    font-size: larger;
+    color: #474747;
+}
+.dashboard-button {
+    padding: 0%;
+    padding-left: 0%;
+    margin-right: 2%;
+    background: none;
+    margin-top: auto;
+    width: 25px;
+    height: 25px;
+    fill: #474747;
+    transition: fill .3s;
+}
+
+.dashboard-button:hover{
+    fill: black;
+}
+.dashboard-checkbox{
+    height: 25px;
+    width: 25px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
