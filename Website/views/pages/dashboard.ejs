@@ -10,9 +10,14 @@
 <main>
 <div class="dashboard-container">
 
+
+    <% items = JSON.parse(items); %>
+
+    <% items.forEach(function(item) { %>
+        
     <div class="dashboard-listing">
         <div class="dashboard-listing-left">
-            <span class="dashboard-listing-title"> Opdracht Aanmaken</span>
+            <span class="dashboard-listing-title"> <% item.name %> </span>
         </div>
         <div class="dashboard-listing-right">
             <button class="dashboard-button"> <embed src="icons/edit.svg"> </button>
@@ -20,6 +25,8 @@
             <input type="checkbox" class="dashboard-button dashboard-checkbox"></input>
         </div>
     </div>
+    <% }); %>
+
     <div class="dashboard-listing">
         <div class="dashboard-listing-left">
             <span class="dashboard-listing-title"> Opdracht Vrijgeven</span>

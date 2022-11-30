@@ -134,7 +134,13 @@ app.get('/opdracht', function(req, res) {
 
 // daschboard page
 app.get('/dashboard', function(req, res) {
-  res.render('pages/dashboard');
+  connectionPool.query('SELECT name FROM assignments', function(err, result){
+    // ...
+    var data = JSON.stringify(result);
+    console.log({items: data});
+    res.render('pages/dashboard', {items: data});
+});
+
 });
 
 //get css
