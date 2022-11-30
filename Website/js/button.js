@@ -1,3 +1,13 @@
+function hoverBtn(){
+    var e = document.getElementsByClassName("btn-arrow")[0];
+    e.style.width = "23px";
+}
+
+function leaveBtn(){
+    var e = document.getElementsByClassName("btn-arrow")[0];
+    e.style.width = "0";
+}
+
 function openQuestion() {
     var e = document.getElementById("questionBox");
     e.style.display = "block";

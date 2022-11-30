@@ -3,7 +3,7 @@ footer{
     background-color: #00396e;
     color: white;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     margin-top: auto;
     height: 100px;
     bottom: 0;

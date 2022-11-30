@@ -26,7 +26,7 @@ text-align: center;
     width: 100%;
     position: relative;
     padding-top: 150px;
-    padding-bottom: 30px;
+    padding-bottom: 15px;
     padding-right: 50px;
     padding-left: 50px;
 }
@@ -35,7 +35,7 @@ text-align: center;
     color: #fff;
     line-height: 1.2;
     text-align: center;
-    display: block;
+    display: flex;
     position: absolute;
     width: 100%;
     top: 0;
@@ -43,6 +43,9 @@ text-align: center;
     background-color: #0055A3;
     padding-top: 50px;
     padding-bottom: 39px;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: nowrap;
 }
 
 .wrap-input{
@@ -54,6 +57,7 @@ text-align: center;
 .roomcode-input{
     font-size: 16px;
     color: #43383e;
+    border: solid 2px;
     line-height: 1.2;
     position: relative;
     display: block;
@@ -66,15 +70,16 @@ text-align: center;
 
 .roomcode-form-btn{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     padding: 0 20px;
-    min-width: 160px;
-    height: 62px;
+    width: 15.5rem;
+    min-width: 10rem;
+    height: 3.125rem;
     background-color: #F6D11C;
     border-radius: 31px;
     font-size: 18px;
-    color: black;
+    color: white;
     line-height: 1.2;
     text-transform: uppercase;
     -webkit-transition: all 0.4s;
@@ -86,7 +91,8 @@ text-align: center;
 }
 
 .roomcode-form-btn:hover{
-    background-color: #7AC142;
+    background-color: #4ad42c;
+    width: 17.5rem;
 }
 
 .container-roomcode-form-btn{
@@ -100,4 +106,17 @@ text-align: center;
 button{
     outline: none !important;
     border: none;
+}
+
+.btn-arrow{
+    width: 0;
+    transition: 0.45s ease;
+}
+
+#logo{
+    height: 6.25rem;
+    width: 6.25rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 5.25rem;
 }

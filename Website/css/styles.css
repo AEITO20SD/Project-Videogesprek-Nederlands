@@ -282,7 +282,7 @@ h2 {
 }
 
 .delete {
-    fill: #EF5858;
+    fill: #adb1b1;
     position: absolute;
     top: -14px;
     left: 164px;
@@ -291,7 +291,7 @@ h2 {
 }
 
 .delete:hover{
-    fill: #c44848;
+    fill: #8e9292;
     transition: ease 0.3s;
 }
 
@@ -315,7 +315,7 @@ h2 {
 }
 
 .button:hover{
-    background: #7AC142;
+    background: #4ad42c;
     transition: 0.5s ease;
 
 }
@@ -364,7 +364,7 @@ body {
     stroke-dashoffset: 166;
     stroke-width: 2;
     stroke-miterlimit: 10;
-    stroke: #7ac142;
+    stroke: #4ad42c;
     fill: none;
     animation: checkstroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards
 }
@@ -378,7 +378,7 @@ body {
     stroke: #fff;
     stroke-miterlimit: 10;
     margin: 10% auto;
-    box-shadow: inset 0px 0px 0px #7ac142;
+    box-shadow: inset 0px 0px 0px #4ad42c;
     animation: checkfill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both
 }
 
@@ -406,7 +406,7 @@ body {
 
 @keyframes checkfill {
     100% {
-        box-shadow: inset 0px 0px 0px 30px #7ac142
+        box-shadow: inset 0px 0px 0px 30px #4ad42c
     }
 }
 
