@@ -1,7 +1,8 @@
 const express = require("express")
   ,app = express()
   ,bodyParser = require("body-parser")
-  ,mysql = require('mysql');
+  ,mysql = require('mysql')
+  ,config = require('./config.json');
   // , passport = require('passport')
   // , MicrosoftStrategy = require('passport-microsoft').Strategy
   // , morgan = require('morgan')
@@ -9,14 +10,19 @@ const express = require("express")
   // , session = require('express-session');
 
 //connect to database
-var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "fieldlab"
+const connectionPool = mysql.createPool({
+  host: config.database.host,
+  port: config.database.port,
+  user: config.database.user,
+  password: config.database.password,
+  database: config.database.name,
+  timeout: config.database.timeout,
+  timezone: "UTC",
+  multipleStatements: true,
+  connectionLimit: 5
 });
 
-con.connect(function(err) {
+connectionPool.getConnection(function(err) {
   if (err) throw err;
   console.log("Connected!");
 });
@@ -143,7 +149,7 @@ app.post("/", function(req, res) {
   var answers = [];
   var response = [];
 
-  con.query("SELECT correctAnswers FROM assignments WHERE id = 1", function (err, result, fields) {
+  connectionPool.query("SELECT correctAnswers FROM assignments WHERE id = 1", function (err, result, fields) {
     if (err) throw err;
     console.log(result[0].correctAnswers);
     console.log(userinput);
@@ -165,7 +171,7 @@ app.post("/", function(req, res) {
 app.post("/getAssignmentData",function(req, res) {
   var assignmentId = req.body.assignmentId;
 
-  con.query("SELECT possibleAnswers FROM assignments WHERE id = " + assignmentId, function (err, result, fields) {
+  connectionPool.query("SELECT possibleAnswers FROM assignments WHERE id = " + assignmentId, function (err, result, fields) {
     if (err) throw err;
     console.log(result[0].possibleAnswers);
     console.log(assignmentId);
