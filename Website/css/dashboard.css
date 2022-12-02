@@ -13,7 +13,7 @@
 .dashboard-listing{
     display:flex;   
     flex-direction: row;
-    margin-bottom: 2%;
+    margin-bottom: 20px;
     width: 100%;
     background-color: white;
     justify-content: space-between;
@@ -30,7 +30,7 @@
     display: flex;
     margin-right: 1%;
     justify-content: space-between;
-    width: 10%;
+    width: 130px;
     margin-top: auto;
     margin-bottom:auto;
     

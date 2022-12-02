@@ -3,17 +3,14 @@ footer{
     background-color: #00396e;
     color: white;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     margin-top: auto;
     height: 100px;
     bottom: 0;
     position: absolute;
+    align-items: center;
 }
 
 .footer-container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
     padding: 20px 0;
 }

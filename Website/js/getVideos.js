@@ -32,19 +32,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   afterVideosLoaded();
 });
 
-// function getAssignmentData(id){
-//   fetch('/getAssignmentData',{
-//       method: "POST",
-//       // Set the headers
-//       headers: {'Accept': 'application/json','Content-Type': 'application/json' },
-//       // Set the post data
-//       body: JSON.stringify({assignmentId: id})
-//   })
-//   .then((response) => response.json())
-//   .then(function(data) {
-//        console.log(data);
-//   });
-// }
+
 
 function placeVideos(videos) {
   let shuffledVideoList = shuffle(videos);

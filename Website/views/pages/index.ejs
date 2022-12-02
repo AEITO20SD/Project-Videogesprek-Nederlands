@@ -14,11 +14,19 @@
                 <div class="login-form">
                     <span class="login-form-title"><h3>Vul een roomcode in</h3></span>
                     <div class="wrap-input">
-                        <input class="roomcode-input" id="roomcode-input" type="text" name="roomcode" placeholder="Roomcode">
+
+
+                        <!-- If there is an error then show the error message -->
+                        <% if(error){ %>
+                            <h1 style="margin: 0 0 20px 0;font-size: medium;color: red;"><%= message %></h1>
+                        <% } %>
+
+
+                        <input  class="roomcode-input" id="roomcode-input" type="text" placeholder="Roomcode">
                     </div>
                     <br>
                     <div class="container-roomcode-form-btn">
-                        <button class="roomcode-form-btn" onclick="window.location.href = document.URL + document.getElementById('roomcode-input').value" onmouseover="hoverBtn()" onmouseleave="leaveBtn()">
+                        <button class="roomcode-form-btn" id="roomcode-submit" onclick="window.location.href =window.location.protocol + '/'+'/' + window.location.hostname + ':' + window.location.port + '/' + document.getElementById('roomcode-input').value" onmouseover="hoverBtn()" onmouseleave="leaveBtn()">
                             Ga naar de opdracht  <svg class="btn-arrow" xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 31.503 30.705">
                                                   <path id="Icon_awesome-arrow-right" data-name="Icon awesome-arrow-right" d="M13.395,4.7l1.561-1.561a1.681,1.681,0,0,1,2.384,0L31.008,16.8a1.681,1.681,0,0,1,0,2.384L17.339,32.857a1.681,1.681,0,0,1-2.384,0L13.395,31.3a1.689,1.689,0,0,1,.028-2.412L21.9,20.813H1.688A1.683,1.683,0,0,1,0,19.125v-2.25a1.683,1.683,0,0,1,1.688-1.687H21.9L13.423,7.116A1.677,1.677,0,0,1,13.395,4.7Z" transform="translate(0 -2.647)" fill="white"/>
                                                 </svg>
@@ -28,6 +36,22 @@
             </div>
         </div>
     </main>
+
+    <script>
+        // Get the input field
+        var input = document.getElementById("roomcode-input");
+
+        // Execute a function when the user presses a key on the keyboard
+        input.addEventListener("keypress", function(event) {
+            // If the user presses the "Enter" key on the keyboard
+            if (event.key === "Enter") {
+                // Cancel the default action, if needed
+                event.preventDefault();
+                // Trigger the button element with a click
+                document.getElementById("roomcode-submit").click();
+            }
+        })
+    </script>
 
     <%- include('../components/footer'); %>
 </body>

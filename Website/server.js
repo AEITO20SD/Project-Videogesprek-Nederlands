@@ -126,7 +126,7 @@ app.set('view engine', 'ejs');
 
 
 app.get('/',function(req,res){
-  res.render('pages/index');
+  res.render('pages/index',{error: false});
 });
 
 // opdracht page
@@ -136,7 +136,7 @@ app.get('/opdracht', function(req, res) {
 
 // daschboard page
 app.get('/dashboard', async function(req, res) {
-  await connectionPool.query('SELECT name FROM assignments', function(err, result){
+  await connectionPool.query('SELECT name FROM assignment', function(err, result){
     // ...
     var data = JSON.stringify(result);
     console.log({items: data});
@@ -145,10 +145,37 @@ app.get('/dashboard', async function(req, res) {
 
 });
 
-app.get('/create-room', function(req, res){
+app.get('/create-room',async function(req, res){
+  console.log(req.query.id);
   var code = Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
   console.log(code);
-  res.send('pages/dashboard-room', {room: code});
+  res.render('pages/dashboard-room', {roomcode: code});
+
+  if(req.params.roomcode.length >= 0){
+    try{
+      const data = await asyncQuery('INSERT INTO room VALUES (DEFAULT,?,?,?,?,?)', req.params.roomcode);
+      if (data.length === 0){
+        // res.status(404).json({
+        //   error: true,
+        //   message: "De ingevoerde roomcode niet geldig of verlopen!"
+        // });
+        res.render('pages/index', {error: true, message: "De roomcode is niet geldig of is verlopen!"})
+      }else{
+        res.render('pages/opdracht', data);
+        // res.status(200).json(data);
+        
+      }
+    }
+    catch(e){
+      res.render('pages/index', {error: true, message: e})
+      // res.status(400).json({
+      //   error: true,
+      //   message: e
+      // })
+    }
+  }else{
+    res.render('pages/index');
+  }
 });
 
 //get css
@@ -239,14 +266,17 @@ async function asyncQuery(query, values) {
 }
 
 app.get('/:roomcode',async function(req, res) {
+  console.log(req.params.roomcode);
   if(req.params.roomcode.length >= 0){
     try{
       const data = await asyncQuery('SELECT * FROM room WHERE token = ?', req.params.roomcode);
       if (data.length === 0){
-        res.status(404).json({
-          error: true,
-          message: "Roomcode niet gevonden!"
-        });
+        console.log(data);
+        // res.status(404).json({
+        //   error: true,
+        //   message: "De ingevoerde roomcode niet geldig of verlopen!"
+        // });
+        res.render('pages/index', {error: true, message: "De roomcode is niet geldig of is verlopen!"})
       }else{
         res.render('pages/opdracht', data);
         // res.status(200).json(data);
@@ -254,10 +284,11 @@ app.get('/:roomcode',async function(req, res) {
       }
     }
     catch(e){
-      res.status(400).json({
-        error: true,
-        message: e
-      })
+      res.render('pages/index', {error: true, message: e})
+      // res.status(400).json({
+      //   error: true,
+      //   message: e
+      // })
     }
   }else{
     res.render('pages/index');
