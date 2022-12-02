@@ -271,24 +271,13 @@ app.get('/:roomcode',async function(req, res) {
     try{
       const data = await asyncQuery('SELECT * FROM room WHERE token = ?', req.params.roomcode);
       if (data.length === 0){
-        console.log(data);
-        // res.status(404).json({
-        //   error: true,
-        //   message: "De ingevoerde roomcode niet geldig of verlopen!"
-        // });
         res.render('pages/index', {error: true, message: "De roomcode is niet geldig of is verlopen!"})
       }else{
         res.render('pages/opdracht', data);
-        // res.status(200).json(data);
-        
       }
     }
     catch(e){
       res.render('pages/index', {error: true, message: e})
-      // res.status(400).json({
-      //   error: true,
-      //   message: e
-      // })
     }
   }else{
     res.render('pages/index');
