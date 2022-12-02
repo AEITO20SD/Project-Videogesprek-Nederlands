@@ -150,32 +150,6 @@ app.get('/create-room',async function(req, res){
   var code = Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
   console.log(code);
   res.render('pages/dashboard-room', {roomcode: code});
-
-  if(req.params.roomcode.length >= 0){
-    try{
-      const data = await asyncQuery('INSERT INTO room VALUES (DEFAULT,?,?,?,?,?)', req.params.roomcode);
-      if (data.length === 0){
-        // res.status(404).json({
-        //   error: true,
-        //   message: "De ingevoerde roomcode niet geldig of verlopen!"
-        // });
-        res.render('pages/index', {error: true, message: "De roomcode is niet geldig of is verlopen!"})
-      }else{
-        res.render('pages/opdracht', data);
-        // res.status(200).json(data);
-        
-      }
-    }
-    catch(e){
-      res.render('pages/index', {error: true, message: e})
-      // res.status(400).json({
-      //   error: true,
-      //   message: e
-      // })
-    }
-  }else{
-    res.render('pages/index');
-  }
 });
 
 //get css
