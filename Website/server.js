@@ -136,7 +136,7 @@ app.get('/opdracht', function(req, res) {
 
 // daschboard page
 app.get('/dashboard', async function(req, res) {
-  await connectionPool.query('SELECT name FROM assignment', function(err, result){
+  await connectionPool.query('SELECT id,name FROM assignment', function(err, result){
     // ...
     var data = JSON.stringify(result);
     console.log({items: data});
@@ -239,8 +239,8 @@ async function asyncQuery(query, values) {
   });
 }
 
+//room
 app.get('/:roomcode',async function(req, res) {
-  console.log(req.params.roomcode);
   if(req.params.roomcode.length >= 0){
     try{
       const data = await asyncQuery('SELECT * FROM room WHERE token = ?', req.params.roomcode);
@@ -256,6 +256,21 @@ app.get('/:roomcode',async function(req, res) {
   }else{
     res.render('pages/index');
   }
+});
+
+//get assignment
+app.post("/deleteAssignment",async function(req, res) {
+    try{
+      const data = await asyncQuery('DELETE FROM assignment WHERE id = ?', req.body.assignmentId);
+      if (data.length === 0){
+        res.send({error: true, message: "Kon opdracht niet verwijderen..."})
+      }else{
+        res.status(200).send({error: false});
+      }
+    }
+    catch(e){
+      res.send({error: true, message: e})
+    }
 });
 
 app.listen(8080);
