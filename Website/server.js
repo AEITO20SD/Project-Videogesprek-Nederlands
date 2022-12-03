@@ -241,16 +241,30 @@ async function asyncQuery(query, values) {
 app.get('/:roomcode',async function(req, res) {
   if(req.params.roomcode.length >= 0){
     try{
-      const data = await asyncQuery('SELECT * FROM room WHERE token = ?', req.params.roomcode);
-      if (data.length === 0){
+      const data = await asyncQuery('SELECT assignment.name, assignment.description, video.url, room.endTime FROM ((room INNER JOIN assignment ON room.assignmentId = assignment.id) INNER JOIN video ON room.assignmentId = video.assignmentId) WHERE room.token = ?', req.params.roomcode);
+      if (data.length === 0 || data[0].endTime < Date.now()){
         res.status(404).json({
           error: true,
-          message: "Roomcode niet gevonden!"
+          message: "Roomcode niet gevonden of roomcode is verlopen!"
         });
-      }else{
-        res.render('pages/opdracht', data);
-        // res.status(200).json(data);
-        
+      }else {
+
+        console.log(data[0].endTime);
+        console.log(Date.now());
+        var i = 0;
+        var resendData = {name: null, description: null, videos:[null]};
+
+        //compress json
+        resendData.name = data[0].name;
+        resendData.description = data[0].description;
+        data.forEach(element =>{
+           resendData.videos[i] = element.url;
+           i++
+        });
+
+        //send data back
+        res.status(200).json(resendData);
+        //res.render('pages/opdracht', data);
       }
     }
     catch(e){
