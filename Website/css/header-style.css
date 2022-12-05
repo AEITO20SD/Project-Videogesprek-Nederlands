@@ -32,6 +32,14 @@
     transition: 0.5s ease;
 }
 
+#logo{
+    width: 6.25rem;
+    height: 6.25rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 5.25rem;
+}
+
 /* login pop up */
 
     .openBtn {
