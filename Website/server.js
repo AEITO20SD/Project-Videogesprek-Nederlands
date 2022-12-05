@@ -145,11 +145,11 @@ app.get('/dashboard', async function(req, res) {
 
 });
 
-app.get('/create-room',async function(req, res){
-  console.log(req.query.id);
+app.post('/create-room',async function(req, res){
+  console.log(req.body);
   var code = Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
   console.log(code);
-  res.render('pages/dashboard-room', {roomcode: code});
+  res.send({roomcode: code});
 });
 
 //get css
@@ -289,7 +289,8 @@ app.post("/deleteAssignment",async function(req, res) {
       }
     }
     catch(e){
-      res.send({error: true, message: e})
+      
+      res.send({error: true, message: JSON.stringify(e)})
     }
 });
 
