@@ -15,9 +15,9 @@ html, body {
 }
 
 main{
-    height: calc(100vh - 190px);
+    /* height: calc(100vh - 190px);
     overflow-y: scroll;
-    overflow-x: hidden;
+    overflow-x: hidden; */
 }
 
 main::-webkit-scrollbar {
