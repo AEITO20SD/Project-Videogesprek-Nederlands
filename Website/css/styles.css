@@ -14,6 +14,33 @@ html, body {
     max-height: 100%;
 }
 
+main{
+    height: calc(100vh - 190px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+main::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  main::-webkit-scrollbar-track {
+    background: transparant;
+    margin: 5px;
+  }
+   
+  /* Handle */
+  main::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+  }
+  
+  /* Handle on hover */
+  main ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
 #tijdlijnContainer {
     display: flex;
     flex-direction: column;

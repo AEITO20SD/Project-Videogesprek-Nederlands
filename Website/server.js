@@ -126,7 +126,7 @@ app.set('view engine', 'ejs');
 
 
 app.get('/',function(req,res){
-  res.render('pages/index');
+  res.render('pages/index',{error: false});
 });
 
 // opdracht page
@@ -136,7 +136,7 @@ app.get('/opdracht', function(req, res) {
 
 // daschboard page
 app.get('/dashboard', async function(req, res) {
-  await connectionPool.query('SELECT name FROM assignments', function(err, result){
+  await connectionPool.query('SELECT id,name FROM assignment', function(err, result){
     // ...
     var data = JSON.stringify(result);
     console.log({items: data});
@@ -145,10 +145,11 @@ app.get('/dashboard', async function(req, res) {
 
 });
 
-app.get('/create-room', function(req, res){
+app.get('/create-room',async function(req, res){
+  console.log(req.query.id);
   var code = Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
   console.log(code);
-  res.send('pages/dashboard-room', {room: code});
+  res.render('pages/dashboard-room', {roomcode: code});
 });
 
 //get css
@@ -238,30 +239,57 @@ async function asyncQuery(query, values) {
   });
 }
 
+//room
 app.get('/:roomcode',async function(req, res) {
   if(req.params.roomcode.length >= 0){
     try{
-      const data = await asyncQuery('SELECT * FROM room WHERE token = ?', req.params.roomcode);
-      if (data.length === 0){
+      const data = await asyncQuery('SELECT assignment.name, assignment.description, video.url, room.endTime FROM ((room INNER JOIN assignment ON room.assignmentId = assignment.id) INNER JOIN video ON room.assignmentId = video.assignmentId) WHERE room.token = ?', req.params.roomcode);
+      if (data.length === 0 || data[0].endTime < Date.now()){
         res.status(404).json({
           error: true,
-          message: "Roomcode niet gevonden!"
+          message: "Roomcode niet gevonden of roomcode is verlopen!"
         });
-      }else{
-        res.render('pages/opdracht', data);
-        // res.status(200).json(data);
-        
+      }else {
+
+        console.log(data[0].endTime);
+        console.log(Date.now());
+        var i = 0;
+        var resendData = {name: null, description: null, videos:[null]};
+
+        //compress json
+        resendData.name = data[0].name;
+        resendData.description = data[0].description;
+        data.forEach(element =>{
+           resendData.videos[i] = element.url;
+           i++
+        });
+
+        //send data back
+        res.status(200).json(resendData);
+        //res.render('pages/opdracht', data);
       }
     }
     catch(e){
-      res.status(400).json({
-        error: true,
-        message: e
-      })
+      res.render('pages/index', {error: true, message: e})
     }
   }else{
     res.render('pages/index');
   }
+});
+
+//get assignment
+app.post("/deleteAssignment",async function(req, res) {
+    try{
+      const data = await asyncQuery('DELETE FROM assignment WHERE id = ?', req.body.assignmentId);
+      if (data.length === 0){
+        res.send({error: true, message: "Kon opdracht niet verwijderen..."})
+      }else{
+        res.status(200).send({error: false});
+      }
+    }
+    catch(e){
+      res.send({error: true, message: e})
+    }
 });
 
 app.listen(8080);
