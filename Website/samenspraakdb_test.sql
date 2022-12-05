@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 05 dec 2022 om 12:40
+-- Gegenereerd op: 05 dec 2022 om 12:52
 -- Serverversie: 10.4.21-MariaDB
 -- PHP-versie: 7.4.29
 
@@ -200,7 +200,7 @@ INSERT INTO `video` (`id`, `name`, `url`, `assignmentId`) VALUES
 (9, 'video9', 'videos/3.3.mp4', 1),
 (10, 'video10', 'videos/4.1.mp4', 1),
 (11, 'video11', 'videos/4.2.mp4', 1),
-(12, 'video12', '4.3.mp4', 1),
+(12, 'video12', 'videos/4.3.mp4', 1),
 (13, 'video13', 'videos/5.1.mp4', 1),
 (14, 'video14', 'videos/5.2.mp4', 1),
 (15, 'video15', 'videos/5.3.mp4', 1);
@@ -317,27 +317,27 @@ ALTER TABLE `assignment_has_video`
 --
 ALTER TABLE `docent_has_assignment`
   ADD CONSTRAINT `fk_Assignment_has_Docent_Assignment1` FOREIGN KEY (`assignmentId`) REFERENCES `assignment` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_Assignment_has_Docent_Docent1` FOREIGN KEY (`docentId`) REFERENCES `docent` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_Assignment_has_Docent_Docent1` FOREIGN KEY (`docentId`) REFERENCES `docent` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Beperkingen voor tabel `participant`
 --
 ALTER TABLE `participant`
-  ADD CONSTRAINT `fk_room` FOREIGN KEY (`roomId`) REFERENCES `room` (`id`);
+  ADD CONSTRAINT `fk_room` FOREIGN KEY (`roomId`) REFERENCES `room` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Beperkingen voor tabel `participant_has_video`
 --
 ALTER TABLE `participant_has_video`
-  ADD CONSTRAINT `fk_Video_has_Participant_Participant1` FOREIGN KEY (`participantId`) REFERENCES `participant` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_Video_has_Participant_Video1` FOREIGN KEY (`videoId`) REFERENCES `video` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_Video_has_Participant_Participant1` FOREIGN KEY (`participantId`) REFERENCES `participant` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Video_has_Participant_Video1` FOREIGN KEY (`videoId`) REFERENCES `video` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Beperkingen voor tabel `room`
 --
 ALTER TABLE `room`
-  ADD CONSTRAINT `fk_assignment1` FOREIGN KEY (`assignmentId`) REFERENCES `assignment` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_docent1` FOREIGN KEY (`ownerId`) REFERENCES `docent` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_assignment1` FOREIGN KEY (`assignmentId`) REFERENCES `assignment` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_docent1` FOREIGN KEY (`ownerId`) REFERENCES `docent` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Beperkingen voor tabel `video`
