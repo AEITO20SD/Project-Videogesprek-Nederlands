@@ -145,18 +145,27 @@ app.get('/dashboard', async function(req, res) {
 
 });
 
-app.get('/create-room',async function(req, res){
-  console.log(req.query.id);
-  var code = Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
-  console.log(code);
-  res.render('pages/dashboard-room', {roomcode: code});
-});
-
 //get css
 app.use(express.static(__dirname + '/'));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.post('/create-room',async function(req, res){
+  var assignmentId = req.body.assignmentId;
+  console.log(req.body);
+  var code = Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
+  console.log(code);
+  try{
+    await connectionPool.query('INSERT INTO `room` (`id`, `token`, `startTime`, `endTime`, `ownerId`, `assignmentId`) VALUES (NULL, ' + code + ', NOW(), DATE_ADD(NOW() , INTERVAL 1 HOUR) , 2, '+ req.body.assignmentId +');', function(err, result){
+      res.send({roomcode: code});
+    });
+  }catch(e){
+    console.log(e);
+    res.send({error: true, message: e});
+  }
+  
+});
 
 //check answers for video
 app.post("/", function(req, res) {
@@ -289,7 +298,8 @@ app.post("/deleteAssignment",async function(req, res) {
       }
     }
     catch(e){
-      res.send({error: true, message: e})
+      
+      res.send({error: true, message: JSON.stringify(e)})
     }
 });
 
