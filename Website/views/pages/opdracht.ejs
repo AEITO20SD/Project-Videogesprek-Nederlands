@@ -116,20 +116,17 @@
         <div class="js-videos">
 
         </div>
-      <div class="boxOverlay" id="questionBox">
+      <div class="boxOverlay" id="questionBox" style="display: block;">
         <div class="boxContent">
 
           <h4>Uitleg opdracht</h4><button class="closeButton" onclick="closeQuestion()"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 40 40">
           <path id="Icon_awesome-arrow-circle-right" data-name="Icon awesome-arrow-circle-right" d="M18,.563A17.438,17.438,0,1,1,.563,18,17.434,17.434,0,0,1,18,.563Zm-2.032,10.1,5.309,5.091H8.438A1.683,1.683,0,0,0,6.75,17.438v1.125A1.683,1.683,0,0,0,8.438,20.25H21.277l-5.309,5.091a1.689,1.689,0,0,0-.028,2.412l.773.766a1.681,1.681,0,0,0,2.384,0l9.33-9.323a1.681,1.681,0,0,0,0-2.384L19.1,7.474a1.681,1.681,0,0,0-2.384,0l-.773.766a1.7,1.7,0,0,0,.028,2.419Z" transform="translate(-0.563 -0.563)" fill="#fff"/>
-        </svg>
+        </svg> 
         </button>
           <br>
-          <h5 style="font-size: 14px">Er zijn vele manieren voor het voeren van een goed zakelijk gesprek.
-            In deze opdracht bekijk je een ontslaggesprek. Kies 5 fragmenten uit 
-            het lichtgekleurde gedeelte van de pagina en sleep ze naar het donkerder 
-            gekleurde gedeelte aan de bovenkant van de pagina. Zet de fragmenten in de 
-            volgorde waarvan jij denkt dat ze achter elkaar een goed zakelijk gesprek vormen. 
-            Let op: er blijven dus fragmenten over.</h5>
+          <h3><%= name %></h3>
+          <br>
+          <h5 style="font-size: 14px"><%= description %></h5>
             <br>
           <h5 style="font-size: 14px">Heb je 5 fragmenten in de juiste volgorde geselecteerd?
             Kijk dan met de 'check'-knop rechtsboven op de pagina hoeveel 
@@ -151,7 +148,7 @@
 
           <p>Weet je zeker dat je deze vijf antwoorden wilt nakijken?</p>
 
-          <button class="button" id="button" onclick="checkInput()">Ja</button>
+          <button class="button" id="button" onclick="checkInput(<%= id %>)">Ja</button>
           <button class="button" id="button" onclick="closeCheckBox()">Terug</button>
         </div>
       </div>
@@ -159,7 +156,61 @@
 
   
     <script>
+      videoLibrary = <%- JSON.stringify(videos) %>;
+      placeVideos(videoLibrary);
+      afterVideosLoaded();
+      function placeVideos(videos) {
+  let shuffledVideoList = shuffle(videos);
+
+  let k = 0;
+
+  for (let i = 0; i < shuffledVideoList.length; i++) {
+    let currentVideo = shuffledVideoList[i];
+
+    //hierin kan je relevante data meegeven. denk aan bijvoorbeeld de locatie van een video
+    const videoBlock = document
+      .getElementById("video-block")
+      .content.cloneNode(true);
       
+    videoBlock.querySelector(".js-video").dataset["videoId"] = currentVideo.id;
+    videoBlock.querySelector(".js-video-source").src = currentVideo.url;
+    // videoBlock.querySelector(".js-title").innerHTML = `Videos
+    // ${currentVideo.id}
+    // ${currentVideo.name}
+    // ${currentVideo.url}
+    // ${currentVideo.category}
+    // ${currentVideo.tone}`;
+
+    // vul de rij met videos todat er 5 in staan, maakt daarna een nieuwe rij aan
+    if (i % 5 === 0) {
+      k++;
+
+      let videos = document.querySelector(".js-videos");
+
+      let row = document.createElement("div");
+      row.classList.add("row", "videos", "js-row-" + k);
+      //row.innerHTML = videoCodeBlock;
+      row.appendChild(videoBlock);
+
+      videos.appendChild(row);
+    } else {
+      //document.querySelector(".js-row" + k).innerHTML += videoCodeBlock;
+      document.querySelector(".js-row-" + k).appendChild(videoBlock);
+    }
+  }
+}
+
+//Source: https://stackoverflow.com/a/3718452 // https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm
+function shuffle(sourceArray) {
+  for (var i = 0; i < sourceArray.length - 1; i++) {
+    var j = i + Math.floor(Math.random() * (sourceArray.length - i));
+
+    var temp = sourceArray[j];
+    sourceArray[j] = sourceArray[i];
+    sourceArray[i] = temp;
+  }
+  return sourceArray;
+}
     </script>
 
   </body>

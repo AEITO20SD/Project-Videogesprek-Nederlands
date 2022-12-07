@@ -1,3 +1,6 @@
+const { compareSync } = require("bcryptjs");
+const { request } = require("express");
+
 const express = require("express")
   ,app = express()
   ,bodyParser = require("body-parser")
@@ -168,27 +171,32 @@ app.post('/create-room',async function(req, res){
 });
 
 //check answers for video
-app.post("/", function(req, res) {
-  var userinput = req.body.answers;
-  var answers = [];
-  var response = [];
+app.post("/", async function(req, res) {
+  var request = req.body;
 
-  connectionPool.query("SELECT correctAnswers FROM assignments WHERE id = 1", function (err, result, fields) {
-    if (err) throw err;
-    console.log(result[0].correctAnswers);
-    console.log(userinput);
-
-    answers = JSON.parse(result[0].correctAnswers);
-    
-    for(let i = 0; i < userinput.length; i++) {
-      if(userinput[i] == answers[i]){
-        response[i] = true;
-      }else{
-        response[i] = false;
+  try{
+    const data = await asyncQuery("SELECT `order`, videoId FROM `assignment_has_video` WHERE assignmentId = "+ request.assignmentId);
+    if (data.length === 0){
+      res.send({error:true, message: "Er is een onbekende fout opgetreden bij het nakijken van de opdracht. Probeer het later opnieuw!"})
+    }else{
+      var response = [];
+      
+      for (let i = 0; i < data.length; i++) {
+        console.log(request.answers);
+        console.log(data[i]);
+          if(request.answers[i] == data[i].videoId){
+            response[i] = true;
+          }else{
+            response[i] = false;
+          }
       }
+      res.send(response);
     }
-    res.send(response);
-  });
+  }catch(e){
+    console.log(e);
+    res.send({error: true, message: e})
+  }
+  
 });
 
 //get assignment
@@ -252,25 +260,19 @@ async function asyncQuery(query, values) {
 app.get('/:roomcode',async function(req, res) {
   if(req.params.roomcode.length >= 0){
     try{
-      const data = await asyncQuery('SELECT assignment.name, assignment.description, video.url, room.endTime FROM ((room INNER JOIN assignment ON room.assignmentId = assignment.id) INNER JOIN video ON room.assignmentId = video.assignmentId) WHERE room.token = ?', req.params.roomcode);
+      const data = await asyncQuery('SELECT assignment.id, assignment.name, assignment.description, video.id, video.url, room.endTime FROM ((room INNER JOIN assignment ON room.assignmentId = assignment.id) INNER JOIN video ON room.assignmentId = video.assignmentId) WHERE room.token = ?', req.params.roomcode);
       if (data.length === 0 || data[0].endTime < Date.now()){
         res.render('pages/index',{error: true, message: "Roomcode niet gevonden of is verlopen!"});
-        // res.status(404).json({
-        //   error: true,
-        //   message: "Roomcode niet gevonden of roomcode is verlopen!"
-        // });
       }else {
-
-        console.log(data[0].endTime);
-        console.log(Date.now());
         var i = 0;
         var resendData = {name: null, description: null, videos:[null]};
 
-        //compress json
+        //minify json
+        resendData.id = data[0].id;
         resendData.name = data[0].name;
         resendData.description = data[0].description;
         data.forEach(element =>{
-           resendData.videos[i] = element.url;
+           resendData.videos[i] = {id: element.id, url: element.url};
            i++
         });
 

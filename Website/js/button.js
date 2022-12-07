@@ -28,7 +28,7 @@ function closeCheckBox() {
     e.style.display = "none";
 }
 
-function checkInput(){
+function checkInput(id){
     let dropzones = document.querySelectorAll('.js-dropzone');
     let score = 0;
     let answers = [];
@@ -53,14 +53,12 @@ function checkInput(){
             answers[i] = videoId;
         }
         console.log(answers);
-        checkanswers(answers, dropzones);
+        checkanswers(answers, id, dropzones);
         closeCheckBox();
-    }else{
-
     }
 }
 
-async function checkanswers(userinput, dropzones) {
+async function checkanswers(userinput, Id, dropzones) {
     console.log("checkanswers function fired");
 
     // Create and Send the request
@@ -70,7 +68,7 @@ async function checkanswers(userinput, dropzones) {
         // Set the headers
         headers: {'Accept': 'application/json','Content-Type': 'application/json' },
         // Set the post data
-        body: JSON.stringify({answers : userinput})
+        body: JSON.stringify({assignmentId: Id, answers : userinput})
     })
     .then(function (response) {
         // Save the response status in a variable to use later.
