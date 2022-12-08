@@ -137,6 +137,11 @@ app.get('/opdracht', function(req, res) {
   res.render('pages/opdracht');
 });
 
+// login pagina
+app.get('/login', function(req, res) {
+  res.render('pages/login');
+});
+
 // daschboard page
 app.get('/dashboard', async function(req, res) {
   await connectionPool.query('SELECT id,name FROM assignment', function(err, result){
@@ -145,6 +150,7 @@ app.get('/dashboard', async function(req, res) {
     console.log({items: data});
     res.render('pages/dashboard', {items: data});
 });
+
 
 });
 
@@ -304,6 +310,35 @@ app.post("/deleteAssignment",async function(req, res) {
       res.send({error: true, message: JSON.stringify(e)})
     }
 });
+
+// login submission routing
+app.post('/login',(req, res) => {
+
+  const username = req.body.username;
+  const password = req.body.password;
+
+  
+// database connectie voor het ophalen van de gebruikersnaam
+const query = `SELECT * FROM docent WHERE emailAddress = '${username}'`;
+connectionPool.query(query, (error, result) => {
+  if (error) {
+    // If there is an error, redirect the user to the error page
+    res.redirect('pages/login');
+  } else {
+    // If the query is successful, compare the user's password to the hashed password in the database
+    const user = result[0];
+    if (password === user.password) {
+      // If the passwords match, redirect the user to the home page
+      res.redirect('/dashboard');
+    } else {
+      // If the passwords do not match, redirect the user to the login page with an error message
+      res.render('pages/login', {error: true, message: 'error'})
+
+    }
+  }
+});
+});
+
 
 app.listen(8080);
 console.log('Server is listening on port 8080');

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('../components/head'); %>
+        <link rel="stylesheet" href="css/dashboard.css"/>
+        <link rel="stylesheet" href="css/header-style.css">
+        <script> 
+        </script>
+    </head>
+    <body>
+        <%- include('../components/header'); %>
+        
+ <!-- input velden voor eenvoudige login -->
+ 
+ <form action="/login" method="post">
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username"><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password"><br><br>
+    <input type="submit" value="Submit">
+  </form>
+  
+        <%- include('../components/footer'); %>
+    </body>
+    </html>
