@@ -493,4 +493,51 @@ video {
     height: 100%;
     border-radius: 13px;
 }
+ /* Styling voor de login pagina */
+.loginBox {
+border:1px solid black;
+display: flex;
+justify-content: center;
+margin-top: 50px;
+margin-bottom: 50px;
+background-color: black;
+}
 
+.leraar-input{
+    font-size: 16px;
+    color: #43383e;
+    border: solid 2px;
+    line-height: 1.2;
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 62px;
+    background: #fff;
+    border-radius: 31px;
+    padding: 0 35px 0 35px;
+}
+
+.leraar-login-btn{
+    display: flex;
+    align-items: center;
+    width: 15.5rem;
+    min-width: 10rem;
+    height: 3.125rem;
+    background-color: #F6D11C;
+    border-radius: 31px;
+    font-size: 18px;
+    color: white;
+    line-height: 1.2;
+    text-transform: uppercase;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+    margin: auto;
+    text-align: center !important;
+    justify-content: center;
+}
+.leraar-login-btn:hover{
+    background-color: #4ad42c;
+    width: 17.5rem;
+}
