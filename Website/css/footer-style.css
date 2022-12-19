@@ -8,6 +8,7 @@ footer{
     height: 100px;
     bottom: 0;
     align-items: center;
+    position:fixed;
 }
 
 .footer-container{
