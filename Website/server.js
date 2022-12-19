@@ -266,14 +266,17 @@ async function asyncQuery(query, values) {
 app.get('/:roomcode',async function(req, res) {
   if(req.params.roomcode.length >= 0){
     try{
+      //get data assignment data from database
       const data = await asyncQuery('SELECT assignment.id, assignment.name, assignment.description, video.id, video.url, room.endTime FROM ((room INNER JOIN assignment ON room.assignmentId = assignment.id) INNER JOIN video ON room.assignmentId = video.assignmentId) WHERE room.token = ?', req.params.roomcode);
+      
+      //if is no data or the data.endtime is expired then render start page with error
       if (data.length === 0 || data[0].endTime < Date.now()){
         res.render('pages/index',{error: true, message: "Roomcode niet gevonden of is verlopen!"});
       }else {
+        //minify json
         var i = 0;
         var resendData = {name: null, description: null, videos:[null]};
 
-        //minify json
         resendData.id = data[0].id;
         resendData.name = data[0].name;
         resendData.description = data[0].description;
@@ -282,14 +285,15 @@ app.get('/:roomcode',async function(req, res) {
            i++
         });
 
-        //send data back
-        //res.status(200).json(resendData);
+        //render assignment(opdracht.ejs) with minifyed JSON
         res.render('pages/opdracht', resendData);
       }
     }
+    //if there is an error with getting the data from the database then render index with error message
     catch(e){
       res.render('pages/index', {error: true, message: e})
     }
+    //if there is no roomcode in url render index without any error or json data
   }else{
     res.render('pages/index');
   }

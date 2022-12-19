@@ -160,32 +160,26 @@
       placeVideos(videoLibrary);
       afterVideosLoaded();
       function placeVideos(videos) {
-  let shuffledVideoList = shuffle(videos);
+      let shuffledVideoList = shuffle(videos);
 
-  let k = 0;
+      let k = 0;
 
-  for (let i = 0; i < shuffledVideoList.length; i++) {
-    let currentVideo = shuffledVideoList[i];
+      for (let i = 0; i < shuffledVideoList.length; i++) {
+        let currentVideo = shuffledVideoList[i];
 
-    //hierin kan je relevante data meegeven. denk aan bijvoorbeeld de locatie van een video
-    const videoBlock = document
-      .getElementById("video-block")
-      .content.cloneNode(true);
+        //hierin kan je relevante data meegeven. denk aan bijvoorbeeld de locatie van een video
+        const videoBlock = document
+          .getElementById("video-block")
+          .content.cloneNode(true);
       
-    videoBlock.querySelector(".js-video").dataset["videoId"] = currentVideo.id;
-    videoBlock.querySelector(".js-video-source").src = currentVideo.url;
-    // videoBlock.querySelector(".js-title").innerHTML = `Videos
-    // ${currentVideo.id}
-    // ${currentVideo.name}
-    // ${currentVideo.url}
-    // ${currentVideo.category}
-    // ${currentVideo.tone}`;
+        videoBlock.querySelector(".js-video").dataset["videoId"] = currentVideo.id;
+        videoBlock.querySelector(".js-video-source").src = currentVideo.url;
 
-    // vul de rij met videos todat er 5 in staan, maakt daarna een nieuwe rij aan
-    if (i % 5 === 0) {
-      k++;
+        // vul de rij met videos todat er 5 in staan, maakt daarna een nieuwe rij aan
+        if (i % 5 === 0) {
+          k++;
 
-      let videos = document.querySelector(".js-videos");
+          let videos = document.querySelector(".js-videos");
 
       let row = document.createElement("div");
       row.classList.add("row", "videos", "js-row-" + k);
